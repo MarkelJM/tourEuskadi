@@ -133,6 +133,7 @@
 		D3548ACC2C9C7E670019F58C /* DatesEvent+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548ACB2C9C7E670019F58C /* DatesEvent+Firebase.swift */; };
 		D3548ACF2C9C7E860019F58C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548ACE2C9C7E860019F58C /* Coin.swift */; };
 		D3548AD12C9C7E9C0019F58C /* Coin+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AD02C9C7E9C0019F58C /* Coin+Firebase.swift */; };
+		D3548AD52C9C80980019F58C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = D3548AD42C9C80980019F58C /* FirebaseFunctions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -267,6 +268,7 @@
 				D354897C2C9211690019F58C /* KeychainSwift in Frameworks */,
 				D35489752C9211510019F58C /* FirebaseCrashlytics in Frameworks */,
 				D35489772C9211510019F58C /* FirebaseFirestore in Frameworks */,
+				D3548AD52C9C80980019F58C /* FirebaseFunctions in Frameworks */,
 				D35489712C9211510019F58C /* FirebaseAnalytics in Frameworks */,
 				D35489792C9211510019F58C /* FirebaseStorage in Frameworks */,
 				D35489732C9211510019F58C /* FirebaseAuth in Frameworks */,
@@ -282,6 +284,7 @@
 			children = (
 				D35489582C920FDA0019F58C /* tourBasqueCountry */,
 				D35489572C920FD90019F58C /* Products */,
+				D3548AD32C9C80980019F58C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -980,6 +983,13 @@
 			path = Coin;
 			sourceTree = "<group>";
 		};
+		D3548AD32C9C80980019F58C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1004,6 +1014,7 @@
 				D35489782C9211510019F58C /* FirebaseStorage */,
 				D354897B2C9211690019F58C /* KeychainSwift */,
 				D35489C02C9C3E7A0019F58C /* ZIPFoundation */,
+				D3548AD42C9C80980019F58C /* FirebaseFunctions */,
 			);
 			productName = tourBasqueCountry;
 			productReference = D35489562C920FD90019F58C /* tourBasqueCountry.app */;
@@ -1465,6 +1476,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D35489BF2C9C3E7A0019F58C /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		D3548AD42C9C80980019F58C /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D354896F2C9211510019F58C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
 		};
 /* End XCSwiftPackageProductDependency section */
 
