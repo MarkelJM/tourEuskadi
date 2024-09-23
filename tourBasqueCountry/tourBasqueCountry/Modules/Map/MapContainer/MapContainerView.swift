@@ -24,7 +24,7 @@ struct MapContainerView: View {
                         .edgesIgnoringSafeArea([.top, .bottom])
                 } else {
                     Map2DView()
-                        //.edgesIgnoringSafeArea(.all)
+                        .edgesIgnoringSafeArea([.top, .bottom])
                 }
             }
             //.padding(.bottom, 10)

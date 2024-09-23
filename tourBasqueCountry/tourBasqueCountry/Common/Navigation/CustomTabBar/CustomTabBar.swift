@@ -56,6 +56,8 @@ struct CustomTabBar: View {
         }
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
-        .padding(.top, 200)
+        //.frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom) // Asegura que esté en la parte inferior
+
+        .padding(.top, 150)
     }
 }

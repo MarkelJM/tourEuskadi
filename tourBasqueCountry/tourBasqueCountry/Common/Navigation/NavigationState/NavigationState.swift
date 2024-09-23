@@ -17,7 +17,7 @@ struct NavigationState: View {
 
     private var shouldShowTabBar: Bool {
         switch appState.currentView {
-        case .mapContainer, .challengeList, .settings:
+        case .mapContainer, .challengeList, .settings, .eventView:
             return true
         default:
             return false

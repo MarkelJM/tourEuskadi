@@ -28,18 +28,19 @@ class EventDataManager: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func filterEvents(by date: Date, userLocation: CLLocation) -> [EventModel] {
+    func filterEvents(by date: Date, distance: Double, userLocation: CLLocation) -> [EventModel] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        
         let filteredByDate = events.filter { event in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
             guard let startDate = formatter.date(from: event.eventStartDate) else { return false }
             return startDate >= date
         }
 
-        return filteredByDate.sorted { event1, event2 in
-            let location1 = CLLocation(latitude: event1.latwgs84, longitude: event1.lonwgs84)
-            let location2 = CLLocation(latitude: event2.latwgs84, longitude: event2.lonwgs84)
-            return userLocation.distance(from: location1) < userLocation.distance(from: location2)
+        // Filtrar por distancia
+        return filteredByDate.filter { event in
+            let eventLocation = CLLocation(latitude: event.latwgs84, longitude: event.lonwgs84)
+            return userLocation.distance(from: eventLocation) / 1000 <= distance // Convertir a km
         }
     }
 }

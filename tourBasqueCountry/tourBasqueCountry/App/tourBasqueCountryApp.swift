@@ -31,12 +31,14 @@ import SwiftUI
 struct tourBasqueCountryApp: App {
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+    @StateObject  var appState = AppState()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationState()
+                        .environmentObject(appState)
+            //ContentView()
+              //  .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
