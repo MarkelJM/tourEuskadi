@@ -9,9 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 extension EventModel {
-    init?(from firestoreData: [String: Any]) {
-        guard let id = firestoreData["id"] as? String,
-              let address = firestoreData["address"] as? String,
+    init?(from firestoreData: [String: Any], documentID: String) {
+        guard let address = firestoreData["address"] as? String,
               let country = firestoreData["country"] as? String,
               let countrycode = firestoreData["countrycode"] as? String,
               let documentDescription = firestoreData["documentDescription"] as? String,
@@ -26,7 +25,7 @@ extension EventModel {
             return nil
         }
 
-        self.id = id
+        self.id = documentID
         self.address = address
         self.country = country
         self.countrycode = countrycode
@@ -38,6 +37,7 @@ extension EventModel {
         self.lonwgs84 = lonwgs84
         self.physicalUrl = physicalUrl
     }
+
     
     func toFirestoreData() -> [String: Any] {
         return [
