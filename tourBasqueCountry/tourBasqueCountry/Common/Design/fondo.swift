@@ -17,6 +17,30 @@ struct Fondo: View {
                 Color(red: 0/255, green: 46/255, blue: 93/255)   // Pantone 288 C (Azul oscuro)
             ]), startPoint: .topLeading, endPoint: .bottomTrailing)
             .ignoresSafeArea()
+        }
+    }
+}
+
+// Vista previa
+#Preview {
+    Fondo()
+}
+
+
+
+/*
+import SwiftUI
+
+struct Fondo: View {
+    var body: some View {
+        ZStack {
+            // Fondo con gradiente suave (Pantone 279 C a Pantone 288 C)
+            LinearGradient(gradient: Gradient(colors: [
+                Color(red: 83/255, green: 143/255, blue: 213/255), // Pantone 279 C (Azul claro)
+                Color(red: 0/255, green: 91/255, blue: 171/255),  // Pantone 7687 C (Azul medio)
+                Color(red: 0/255, green: 46/255, blue: 93/255)   // Pantone 288 C (Azul oscuro)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .ignoresSafeArea()
             
             VStack(spacing: 20) {
                 // Botón con color sólido (Pantone 279 C - Azul Claro)
@@ -73,3 +97,4 @@ struct Fondo: View {
 #Preview {
     Fondo()
 }
+*/

@@ -12,14 +12,13 @@ struct ChallengeListView: View {
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
 
-
     var body: some View {
         ZStack {
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            
+
             VStack(spacing: 20) {
                 Text("Retos")
                     .font(.largeTitle)
@@ -60,9 +59,8 @@ struct ChallengeListView: View {
                         .padding(.vertical, 8)
                         .padding(.horizontal, 5)
                         .onTapGesture {
-                            
                             soundManager.playButtonSound()
-                            
+
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
                                 viewModel.selectChallenge(challenge)
                                 appState.currentView = .mapContainer
@@ -75,23 +73,17 @@ struct ChallengeListView: View {
                     .listStyle(PlainListStyle())
                     .background(Color.black.opacity(0.2))
                     .cornerRadius(20)
-                    .padding(.bottom, 150)
 
-                    
-                    Spacer()//to push up last cell
-                    Spacer()//to push up last cell
-                    Spacer()//to push up last cell
-                    
+                    Spacer()
+
                 } else {
                     Text("Cargando datos...")
                         .font(.title)
                         .foregroundColor(.mateWhite)
                 }
             }
-            .padding()
-            .background(Color.black.opacity(0.7))
-            .cornerRadius(20)
-            .padding(.top, 30)
+            .padding(.horizontal)
+            //.padding(.top, 30)
         }
         .onAppear {
             viewModel.fetchChallenges()

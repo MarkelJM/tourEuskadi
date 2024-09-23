@@ -5,39 +5,80 @@
 //  Created by Markel Juaristi on 19/9/24.
 //
 
-import Foundation
 import SwiftUI
 
-// Botón con fondo blanco y borde rojo
-func whiteBackgroundButton(title: String, action: @escaping () -> Void) -> some View {
+// Botón con color sólido personalizado (oro mate)
+func goldButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.mateRed)
+            .foregroundColor(.white)
             .padding()
             .background(
                 Capsule()
-                    .fill(Color.mateWhite)
+                    .fill(Color(red: 212/255, green: 175/255, blue: 55/255)) // Oro mate
             )
             .overlay(
                 Capsule()
-                    .stroke(Color.mateRed, lineWidth: 2)
+                    .stroke(Color.white, lineWidth: 2) // Borde blanco
             )
     }
 }
 
-// Botón con fondo rojo y borde blanco
-func redBackgroundButton(title: String, action: @escaping () -> Void) -> some View {
+// Botón con color sólido (Pantone 279 C - Azul Claro)
+func blueButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.mateWhite)
+            .foregroundColor(.white)
             .padding()
             .background(
                 Capsule()
-                    .fill(Color.mateRed)
+                    .fill(Color(red: 83/255, green: 143/255, blue: 213/255)) // Azul claro (Pantone 279 C)
             )
+    }
+}
+
+// Botón con gradiente lineal (Pantone 279 C y 7687 C)
+func gradientButton(title: String, action: @escaping () -> Void) -> some View {
+    Button(action: action) {
+        Text(title)
+            .foregroundColor(.white)
+            .padding()
+            .background(
+                LinearGradient(gradient: Gradient(colors: [
+                    Color(red: 83/255, green: 143/255, blue: 213/255), // Azul claro (Pantone 279 C)
+                    Color(red: 0/255, green: 91/255, blue: 171/255)   // Azul medio (Pantone 7687 C)
+                ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
+            .cornerRadius(10)
+    }
+}
+
+// Botón con borde y fondo blanco personalizado (Pantone 288 C)
+func borderedButton(title: String, action: @escaping () -> Void) -> some View {
+    Button(action: action) {
+        Text(title)
+            .foregroundColor(Color(red: 0/255, green: 46/255, blue: 93/255)) // Azul oscuro (Pantone 288 C)
+            .padding()
+            .background(Color.white)
+            .cornerRadius(10)
             .overlay(
-                Capsule()
-                    .stroke(Color.mateWhite, lineWidth: 2)
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 0/255, green: 46/255, blue: 93/255), lineWidth: 2) // Borde azul oscuro
+            )
+    }
+}
+
+// Botón con fondo azul medio (Pantone 7687 C) y borde azul oscuro
+func borderedBlueButton(title: String, action: @escaping () -> Void) -> some View {
+    Button(action: action) {
+        Text(title)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color(red: 0/255, green: 91/255, blue: 171/255)) // Azul medio (Pantone 7687 C)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 0/255, green: 46/255, blue: 93/255), lineWidth: 2) // Borde azul oscuro (Pantone 288 C)
             )
     }
 }
