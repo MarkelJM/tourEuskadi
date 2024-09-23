@@ -42,6 +42,17 @@ struct CustomTabBar: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            
+            Button(action: {
+                selectedTab = .eventView  
+                
+            }) {
+                VStack {
+                    Image(systemName: "calendar")
+                    Text("Eventos")
+                }
+            }
+            .frame(maxWidth: .infinity)
         }
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)

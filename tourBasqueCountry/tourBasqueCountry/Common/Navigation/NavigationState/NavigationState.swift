@@ -96,6 +96,8 @@ struct NavigationState: View {
             ChallengePresentationView(viewModel: ChallengePresentationViewModel(challengeName: challengeName))
         case .settings:
             SettingProfileView()
+        case .eventView:
+            EventView()
         }
     }
 }

@@ -40,6 +40,7 @@ class AppState: ObservableObject {
         case challengePresentation(challengeName: String)
         case settings
         case challengeReward(challengeName: String)
+        case eventView
 
     }
 }

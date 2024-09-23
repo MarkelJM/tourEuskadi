@@ -134,6 +134,15 @@
 		D3548ACF2C9C7E860019F58C /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548ACE2C9C7E860019F58C /* Coin.swift */; };
 		D3548AD12C9C7E9C0019F58C /* Coin+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AD02C9C7E9C0019F58C /* Coin+Firebase.swift */; };
 		D3548AD52C9C80980019F58C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = D3548AD42C9C80980019F58C /* FirebaseFunctions */; };
+		D3548AED2C9D74C40019F58C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AEC2C9D74C40019F58C /* Event.swift */; };
+		D3548AEF2C9D74F90019F58C /* Event+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AEE2C9D74F90019F58C /* Event+Firebase.swift */; };
+		D3548AF12C9D75240019F58C /* EventWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AF02C9D75240019F58C /* EventWebView.swift */; };
+		D3548AF42C9D881C0019F58C /* EventFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AF32C9D881C0019F58C /* EventFirestoreManager.swift */; };
+		D3548AF62C9D89750019F58C /* EventDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AF52C9D89750019F58C /* EventDataManager.swift */; };
+		D3548AF82C9D89A60019F58C /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AF72C9D89A60019F58C /* EventViewModel.swift */; };
+		D3548AFA2C9D89C20019F58C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AF92C9D89C20019F58C /* EventView.swift */; };
+		D3548AFD2C9D8BF90019F58C /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AFC2C9D8BF90019F58C /* EventRow.swift */; };
+		D3548AFF2C9DE15A0019F58C /* fondo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548AFE2C9DE15A0019F58C /* fondo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +267,15 @@
 		D3548ACE2C9C7E860019F58C /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		D3548AD02C9C7E9C0019F58C /* Coin+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+Firebase.swift"; sourceTree = "<group>"; };
 		D3548AD22C9C7F870019F58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D3548AEC2C9D74C40019F58C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D3548AEE2C9D74F90019F58C /* Event+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Firebase.swift"; sourceTree = "<group>"; };
+		D3548AF02C9D75240019F58C /* EventWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWebView.swift; sourceTree = "<group>"; };
+		D3548AF32C9D881C0019F58C /* EventFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFirestoreManager.swift; sourceTree = "<group>"; };
+		D3548AF52C9D89750019F58C /* EventDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataManager.swift; sourceTree = "<group>"; };
+		D3548AF72C9D89A60019F58C /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		D3548AF92C9D89C20019F58C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		D3548AFC2C9D8BF90019F58C /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		D3548AFE2C9DE15A0019F58C /* fondo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fondo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +373,7 @@
 		D35489AA2C9C3CBF0019F58C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3548AF22C9D87EE0019F58C /* Event */,
 				D3548A942C9C7BC40019F58C /* Model */,
 				D3548A772C9C7A150019F58C /* Register */,
 				D3548A692C9C78F30019F58C /* Login */,
@@ -414,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				D35489B82C9C3DE20019F58C /* WebView.swift */,
+				D3548AF02C9D75240019F58C /* EventWebView.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -447,6 +467,7 @@
 			children = (
 				D35489C62C9C3EBE0019F58C /* ColotButtonView.swift */,
 				D35489C82C9C3F280019F58C /* Color.swift */,
+				D3548AFE2C9DE15A0019F58C /* fondo.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -844,6 +865,7 @@
 		D3548A942C9C7BC40019F58C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D3548AEB2C9D74B60019F58C /* EventModel */,
 				D3548AAF2C9C7CFF0019F58C /* Activity */,
 				D3548AAA2C9C7CD30019F58C /* User */,
 				D3548AA52C9C7C890019F58C /* Spot */,
@@ -990,6 +1012,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D3548AEB2C9D74B60019F58C /* EventModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3548AEC2C9D74C40019F58C /* Event.swift */,
+				D3548AEE2C9D74F90019F58C /* Event+Firebase.swift */,
+			);
+			path = EventModel;
+			sourceTree = "<group>";
+		};
+		D3548AF22C9D87EE0019F58C /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D3548AFB2C9D8BDB0019F58C /* EventRow */,
+				D3548AF32C9D881C0019F58C /* EventFirestoreManager.swift */,
+				D3548AF52C9D89750019F58C /* EventDataManager.swift */,
+				D3548AF72C9D89A60019F58C /* EventViewModel.swift */,
+				D3548AF92C9D89C20019F58C /* EventView.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		D3548AFB2C9D8BDB0019F58C /* EventRow */ = {
+			isa = PBXGroup;
+			children = (
+				D3548AFC2C9D8BF90019F58C /* EventRow.swift */,
+			);
+			path = EventRow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1085,9 +1136,11 @@
 				D3548A8F2C9C7B650019F58C /* RegistrationView.swift in Sources */,
 				D3548AAE2C9C7CF40019F58C /* User+Firebase.swift in Sources */,
 				D35489C72C9C3EBE0019F58C /* ColotButtonView.swift in Sources */,
+				D3548AF62C9D89750019F58C /* EventDataManager.swift in Sources */,
 				D35489D12C9C3FE00019F58C /* FirestoreManager.swift in Sources */,
 				D35489B12C9C3D610019F58C /* UserDefaultManager.swift in Sources */,
 				D3548A6E2C9C79A20019F58C /* ForgotPasswordViewModel.swift in Sources */,
+				D3548AFF2C9DE15A0019F58C /* fondo.swift in Sources */,
 				D3548A702C9C79B90019F58C /* ForgotPasswordDataManager.swift in Sources */,
 				D3548ACF2C9C7E860019F58C /* Coin.swift in Sources */,
 				D3548A8C2C9C7B3A0019F58C /* VerificationEmailView.swift in Sources */,
@@ -1096,6 +1149,7 @@
 				D3548A312C9C749A0019F58C /* TakePhotoViewModel.swift in Sources */,
 				D3548A572C9C780E0019F58C /* Map3DFirestoreManager.swift in Sources */,
 				D3548A1A2C9C73480019F58C /* DatesOrderView.swift in Sources */,
+				D3548AF12C9D75240019F58C /* EventWebView.swift in Sources */,
 				D3548A442C9C75AF0019F58C /* SettingProfileViewModel.swift in Sources */,
 				D35489C42C9C3E9A0019F58C /* BaseViewModel.swift in Sources */,
 				D35489DC2C9C40A40019F58C /* CustomTabBar.swift in Sources */,
@@ -1119,6 +1173,7 @@
 				D3548A0A2C9C72680019F58C /* CoinViewModel.swift in Sources */,
 				D3548A2D2C9C74620019F58C /* CameraView.swift in Sources */,
 				D3548A4E2C9C77970019F58C /* MapContainerView.swift in Sources */,
+				D3548AF82C9D89A60019F58C /* EventViewModel.swift in Sources */,
 				D3548AC72C9C7E140019F58C /* FillGap+Extension.swift in Sources */,
 				D3548A7D2C9C7A680019F58C /* OnboardingOneView.swift in Sources */,
 				D35489F72C9C71750019F58C /* ChallengeListViewModel.swift in Sources */,
@@ -1129,6 +1184,7 @@
 				D3548A552C9C77F40019F58C /* Map3DDataManager.swift in Sources */,
 				D3548A132C9C72EA0019F58C /* QuestionAnswerViewModel.swift in Sources */,
 				D35489EF2C9C71020019F58C /* ChallengePresentationViewModel.swift in Sources */,
+				D3548AF42C9D881C0019F58C /* EventFirestoreManager.swift in Sources */,
 				D3548AC42C9C7DF30019F58C /* FillGap.swift in Sources */,
 				D3548A852C9C7AD40019F58C /* ProfileView.swift in Sources */,
 				D35489632C920FDB0019F58C /* Persistence.swift in Sources */,
@@ -1138,8 +1194,10 @@
 				D35489DA2C9C40830019F58C /* NavigationState.swift in Sources */,
 				D3548AC12C9C7DD20019F58C /* Puzzle+Firebase.swift in Sources */,
 				D3548A642C9C78AD0019F58C /* Map2DViewModel.swift in Sources */,
+				D3548AFA2C9D89C20019F58C /* EventView.swift in Sources */,
 				D35489FB2C9C71A70019F58C /* ChallengeListFirestoreManager.swift in Sources */,
 				D35489FF2C9C71DD0019F58C /* PuzzleView.swift in Sources */,
+				D3548AED2C9D74C40019F58C /* Event.swift in Sources */,
 				D35489662C920FDB0019F58C /* tourBasqueCountry.xcdatamodeld in Sources */,
 				D3548A982C9C7BE40019F58C /* Coordinates.swift in Sources */,
 				D35489ED2C9C70E90019F58C /* ChallengePresentationView.swift in Sources */,
@@ -1174,12 +1232,14 @@
 				D35489CC2C9C3F7E0019F58C /* LocationManager.swift in Sources */,
 				D3548A2F2C9C74810019F58C /* TakePhotoView.swift in Sources */,
 				D3548A932C9C7BA10019F58C /* RegisterdataManager.swift in Sources */,
+				D3548AEF2C9D74F90019F58C /* Event+Firebase.swift in Sources */,
 				D35489AF2C9C3D040019F58C /* KeychainManager.swift in Sources */,
 				D3548A0C2C9C727E0019F58C /* CoinDataManager.swift in Sources */,
 				D35489BB2C9C3DFA0019F58C /* SoundManager.swift in Sources */,
 				D3548A822C9C7AAC0019F58C /* AvatarSelectionView.swift in Sources */,
 				D3548A012C9C72060019F58C /* PuzzleViewModel.swift in Sources */,
 				D35489BE2C9C3E540019F58C /* ARViewController.swift in Sources */,
+				D3548AFD2C9D8BF90019F58C /* EventRow.swift in Sources */,
 				D3548A682C9C78DE0019F58C /* MapFirestoreManager.swift in Sources */,
 				D3548AAC2C9C7CE00019F58C /* User.swift in Sources */,
 				D3548A272C9C74200019F58C /* FillGapDatamanager.swift in Sources */,
