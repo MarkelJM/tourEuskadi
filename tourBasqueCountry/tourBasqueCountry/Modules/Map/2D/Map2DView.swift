@@ -16,22 +16,19 @@ struct Map2DView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
 
             VStack {
                 if let errorMessage = viewModel.errorMessage {
                     Text("Error: \(errorMessage)")
                         .foregroundColor(.red)
                 } else if viewModel.authorizationStatus == .notDetermined {
-                    Text("Requesting location permissions...")
+                    Text("Solicitando permisos de ubicación...")
                 } else if viewModel.authorizationStatus == .denied {
-                    Text("Location permissions denied.")
+                    Text("Permisos de ubicación denegados.")
                         .foregroundColor(.red)
                 } else {
-                    Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.mapAnnotations + [viewModel.userLocationAnnotation].compactMap { $0 }) { annotation in
+                    Map(coordinateRegion: $viewModel.region2D, annotationItems: viewModel.mapAnnotations + [viewModel.userLocationAnnotation].compactMap { $0 }) { annotation in
                         MapAnnotation(coordinate: annotation.coordinate) {
                             // Lógica de anotación aquí
                         }

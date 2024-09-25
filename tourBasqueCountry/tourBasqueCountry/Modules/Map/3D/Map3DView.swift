@@ -102,7 +102,7 @@ struct Map3DView: UIViewRepresentable {
         mapView.delegate = context.coordinator
 
         // Configuración de la cámara 3D con un ángulo pronunciado para mostrar los edificios
-        let camera = MKMapCamera(lookingAtCenter: viewModel.region.center, fromDistance: 600, pitch: 75, heading: 0)
+        let camera = MKMapCamera(lookingAtCenter: viewModel.region3D.center, fromDistance: 600, pitch: 75, heading: 0)
         mapView.setCamera(camera, animated: false)
 
         mapView.showsUserLocation = true
@@ -123,8 +123,8 @@ struct Map3DView: UIViewRepresentable {
         print("Updating MKMapView with new annotations...")
         uiView.removeAnnotations(uiView.annotations)
         uiView.addAnnotations(viewModel.mapAnnotations)
-        uiView.setRegion(viewModel.region, animated: true)
-        let updatedCamera = MKMapCamera(lookingAtCenter: viewModel.region.center, fromDistance: 1000, pitch: 60, heading: 0)
+        uiView.setRegion(viewModel.region3D, animated: true)
+        let updatedCamera = MKMapCamera(lookingAtCenter: viewModel.region3D.center, fromDistance: 1000, pitch: 60, heading: 0)
         uiView.setCamera(updatedCamera, animated: true)
     }
 }

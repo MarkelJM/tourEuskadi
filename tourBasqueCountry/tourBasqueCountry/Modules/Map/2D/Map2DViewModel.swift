@@ -13,7 +13,11 @@ import MapKit
 class MapViewModel: BaseViewModel {
     @Published var spots: [Spot] = []
     @Published var authorizationStatus: CLAuthorizationStatus?
-    @Published var region: MKCoordinateRegion
+    //@Published var region: MKCoordinateRegion
+    
+    @Published var region2D: MKCoordinateRegion
+    @Published var region3D: MKCoordinateRegion
+    
     @Published var selectedChallenge: String
     @Published var showChallengeSelection: Bool = false
     @Published var isChallengeBegan: Bool = false
@@ -30,9 +34,16 @@ class MapViewModel: BaseViewModel {
 
     init(appState: AppState) {
         self.appState = appState
-        self.region = MKCoordinateRegion(
+        // Configuración inicial para el mapa 2D
+        self.region2D = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
-            span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        )
+        
+        // Configuración inicial para el mapa 3D
+        self.region3D = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
+            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         )
         self.selectedChallenge = "retoBasico"
         super.init()
@@ -62,7 +73,7 @@ class MapViewModel: BaseViewModel {
             .sink { [weak self] location in
                 guard let self = self else { return }
                 if !self.hasCenteredOnUser {
-                    self.region.center = location.coordinate
+                    self.region2D.center = location.coordinate
                     self.hasCenteredOnUser = true
                 }
                 let avatarImage = self.user?.avatar.rawValue ?? "defaultAvatar"

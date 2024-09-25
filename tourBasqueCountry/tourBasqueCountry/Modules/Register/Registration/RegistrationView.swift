@@ -62,8 +62,15 @@ struct RegisterView: View {
                    }
                    .padding(.horizontal, 40)
                    
-                   redBackgroundButton(title: "Registrarse") {
+                   Button(action: {
                        viewModel.register()
+                   }) {
+                       Text("Registrarse")
+                           .foregroundColor(.mateWhite) // Texto blanco
+                           .padding()
+                           .frame(maxWidth: .infinity)
+                           .background(Color.mateGold) // Fondo oro mate
+                           .cornerRadius(10)
                    }
                    .padding(.top, 20)
                    .padding(.bottom, 50)

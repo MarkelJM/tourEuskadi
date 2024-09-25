@@ -16,10 +16,7 @@ struct FillGapView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                Image("fondoSolar")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+                Fondo() // Usamos el fondo común
                 
                 VStack(spacing: 10) {
                     
@@ -30,7 +27,7 @@ struct FillGapView: View {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
                                 .padding()
-                                .background(Color.mateGold)
+                                .background(Color.mateGold) // Usamos mateGold
                                 .foregroundColor(.black)
                                 .cornerRadius(10)
                         }
@@ -44,7 +41,7 @@ struct FillGapView: View {
                         }) {
                             Text("Comprobar")
                                 .padding()
-                                .background(Color.mateRed)
+                                .background(Color.mateBlueMedium) // Usamos mateBlueMedium
                                 .foregroundColor(.mateWhite)
                                 .cornerRadius(10)
                         }
@@ -55,7 +52,7 @@ struct FillGapView: View {
                     if viewModel.isLoading {
                         Text("Cargando tarea...")
                             .font(.title2)
-                            .foregroundColor(.mateWhite)
+                            .foregroundColor(.mateWhite) // Usamos mateWhite
                     } else if let errorMessage = viewModel.errorMessage {
                         Text("Error: \(errorMessage)")
                             .foregroundColor(.red)
@@ -63,7 +60,7 @@ struct FillGapView: View {
                         VStack(spacing: 20) {
                             Text(fillGap.question)
                                 .font(.title2)
-                                .foregroundColor(.mateGold)
+                                .foregroundColor(.mateGold) // Usamos mateGold
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal)
 
@@ -82,12 +79,12 @@ struct FillGapView: View {
                                 HStack {
                                     Text("\(Character(UnicodeScalar(65 + index)!)).") // Muestra "A.", "B.", "C.", etc.
                                         .font(.headline)
-                                        .foregroundColor(.mateGold)
+                                        .foregroundColor(.mateGold) // Usamos mateGold
 
                                     TextField("Escribe aquí", text: $viewModel.userAnswers[index])
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .padding()
-                                        .background(Color.mateWhite.opacity(0.8))
+                                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                                         .cornerRadius(10)
                                 }
                             }
@@ -108,7 +105,6 @@ struct FillGapView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
-                
             }
             .onAppear {
                 viewModel.fetchFillGap()
@@ -126,6 +122,7 @@ struct FillGapView: View {
     }
 }
 
+
 struct ResultFillGapView: View {
     @ObservedObject var viewModel: FillGapViewModel
     @EnvironmentObject var appState: AppState
@@ -133,26 +130,22 @@ struct ResultFillGapView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
 
             VStack {
                 Text(viewModel.alertMessage)
                     .font(.title)
-                    .foregroundColor(.mateGold)
+                    .foregroundColor(.mateGold) // Usamos mateGold
                     .padding()
 
                 Button(action: {
                     viewModel.showResultAlert = false
                     appState.currentView = .mapContainer
-
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
-                        .foregroundColor(.mateWhite)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .foregroundColor(.mateWhite) // Usamos mateWhite
                         .cornerRadius(10)
                 }
             }

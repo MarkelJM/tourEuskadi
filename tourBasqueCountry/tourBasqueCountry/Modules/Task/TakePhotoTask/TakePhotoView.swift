@@ -15,10 +15,7 @@ struct TakePhotoView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                Image("fondoSolar")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+                Fondo() // Usamos el fondo común
 
                 VStack(spacing: 10) {
 
@@ -29,7 +26,7 @@ struct TakePhotoView: View {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
                                 .padding()
-                                .background(Color.mateGold)
+                                .background(Color.mateGold) // Usamos mateGold
                                 .foregroundColor(.black)
                                 .cornerRadius(10)
                         }
@@ -41,7 +38,7 @@ struct TakePhotoView: View {
                     if viewModel.isLoading {
                         Text("Cargando tarea de foto...")
                             .font(.title2)
-                            .foregroundColor(.mateWhite)
+                            .foregroundColor(.mateWhite) // Usamos mateWhite
                     } else if let errorMessage = viewModel.errorMessage {
                         Text("Error: \(errorMessage)")
                             .foregroundColor(.red)
@@ -49,7 +46,7 @@ struct TakePhotoView: View {
                         VStack(spacing: 20) {
                             Text(takePhoto.question)
                                 .font(.title2)
-                                .foregroundColor(.mateGold)
+                                .foregroundColor(.mateGold) // Usamos mateGold
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal)
 
@@ -58,7 +55,7 @@ struct TakePhotoView: View {
                             }) {
                                 Text("Tomar Foto")
                                     .padding()
-                                    .background(Color.mateBlue)
+                                    .background(Color.mateBlueMedium) // Usamos mateBlueMedium
                                     .foregroundColor(.mateWhite)
                                     .cornerRadius(10)
                             }
@@ -105,23 +102,20 @@ struct TakePhotoView: View {
 
 
 
+
 struct ResultTakePhotoView: View {
     @ObservedObject var viewModel: TakePhotoViewModel
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
 
-    
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
 
             VStack {
                 Text(viewModel.alertMessage)
                     .font(.title)
-                    .foregroundColor(.mateGold)
+                    .foregroundColor(.mateGold) // Usamos mateGold
                     .padding()
 
                 ScrollView {
@@ -129,7 +123,7 @@ struct ResultTakePhotoView: View {
                         if let informationDetail = viewModel.takePhoto?.informationDetail {
                             Text(informationDetail)
                                 .font(.body)
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite) // Usamos mateWhite
                                 .multilineTextAlignment(.center)
                                 .padding()
                         }
@@ -140,11 +134,10 @@ struct ResultTakePhotoView: View {
                 Button(action: {
                     viewModel.showResultModal = false
                     appState.currentView = .mapContainer
-
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }

@@ -17,10 +17,7 @@ struct SettingProfileView: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Fondo común
 
             ScrollView {
                 VStack(spacing: 20) {
@@ -31,8 +28,8 @@ struct SettingProfileView: View {
                         }) {
                             Text("Cerrar Sesión")
                                 .padding()
-                                .background(Color.red)
-                                .foregroundColor(.white)
+                                .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de rojo
+                                .foregroundColor(.mateWhite)
                                 .cornerRadius(10)
                         }
                         .padding([.top, .leading], 20)
@@ -45,7 +42,7 @@ struct SettingProfileView: View {
                         .scaledToFit()
                         .frame(width: 120, height: 120)
                         .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.mateRed, lineWidth: 2))
+                        .overlay(Circle().stroke(Color.mateGold, lineWidth: 2)) // Usamos mateGold
                         .padding(.top, 40)
 
                     VStack(alignment: .leading, spacing: 10) {
@@ -80,7 +77,7 @@ struct SettingProfileView: View {
 
                     Toggle(isOn: $viewModel.isSoundEnabled) {
                         Text("Activar efectos de sonido")
-                            .foregroundColor(.white)
+                            .foregroundColor(.mateWhite)
                             .font(.headline)
                     }
                     .onChange(of: viewModel.isSoundEnabled) { newValue in
@@ -95,17 +92,15 @@ struct SettingProfileView: View {
                         showPolicyView = true
                     }) {
                         HStack {
-                            
                             Image(systemName: "doc.text")
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                             Text("Términos y Condiciones")
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                                 .font(.headline)
-                                //.padding(.top, 30)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium
                         .cornerRadius(10)
                         .padding(.bottom, 30)
                     }
@@ -117,14 +112,14 @@ struct SettingProfileView: View {
                     }) {
                         HStack {
                             Image(systemName: "envelope")
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                             Text("Contacto Email")
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                                 .font(.headline)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color.mateBlueDark) // Usamos mateBlueDark
                         .cornerRadius(10)
                     }
                     .padding(.horizontal)
@@ -133,21 +128,18 @@ struct SettingProfileView: View {
                     }
                     
                     Button(action: {
-                        KeychainManager.shared.delete(key: "userUID")
-                        appState.currentView = .login
-                        viewModel.deleteAccount()
+                        showDeleteAccountAlert = true
                     }) {
                         HStack {
                             Image(systemName: "trash")
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                             Text("Eliminar Cuenta")
                                 .foregroundColor(.mateWhite)
                                 .font(.headline)
-                                //.padding(.top, 30)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.red)
+                        .background(Color.red) // Dejar el rojo para eliminar cuenta
                         .cornerRadius(10)
                         .padding(.top, 20)
                     }
@@ -177,7 +169,7 @@ struct SettingProfileView: View {
             }) {
                 Image(systemName: "pencil.circle")
                     .font(.largeTitle)
-                    .foregroundColor(.mateGold)
+                    .foregroundColor(.mateGold) // Usamos mateGold
                     .padding(.trailing, 20)
                     .padding(.top, 100)
             }
@@ -216,7 +208,7 @@ struct ProfileInfoRow: View {
         HStack {
             Text(label)
                 .font(.headline)
-                .foregroundColor(.mateRed)
+                .foregroundColor(.mateGold) // Usamos mateGold en lugar de mateRed
             Spacer()
             Text(value)
                 .foregroundColor(.mateWhite)
@@ -233,11 +225,11 @@ struct ChallengeStatView: View {
         VStack {
             Text(challenge)
                 .font(.headline)
-                .foregroundColor(.mateBlue)
+                .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
             Text("\(count) tareas completadas")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.mateRed)
+                .foregroundColor(.mateBlueDark) // Usamos mateBlueDark en lugar de mateRed
         }
     }
 }

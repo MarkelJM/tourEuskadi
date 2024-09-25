@@ -15,16 +15,13 @@ struct CoinView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
             
             VStack(spacing: 20) {
                 if viewModel.isLoading {
                     Text("Cargando datos...")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.mateWhite) // Color mateWhite
                 } else if let errorMessage = viewModel.errorMessage {
                     Text("Error: \(errorMessage)")
                         .foregroundColor(.red)
@@ -33,7 +30,7 @@ struct CoinView: View {
                         .edgesIgnoringSafeArea(.all)
                 } else {
                     Text("No hay datos disponibles")
-                        .foregroundColor(.white)
+                        .foregroundColor(.mateWhite) // Color mateWhite
                 }
             }
             
@@ -45,11 +42,10 @@ struct CoinView: View {
                         Image(systemName: "chevron.left")
                             .font(.headline)
                             .padding()
-                            .background(Color.mateGold)
+                            .background(Color.mateGold) // Usamos mateGold
                             .foregroundColor(.black)
                             .cornerRadius(10)
                             .padding(.top, 100)
-
                     }
                     Spacer()
                 }
@@ -72,15 +68,12 @@ struct ResultCoinView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
             
             VStack {
                 Text(viewModel.resultMessage)
                     .font(.title)
-                    .foregroundColor(.mateGold)
+                    .foregroundColor(.mateGold) // Usamos mateGold
                     .padding()
 
                 Button("Continuar") {
@@ -89,8 +82,8 @@ struct ResultCoinView: View {
                     appState.currentView = .mapContainer
                 }
                 .padding()
-                .background(Color.mateRed)
-                .foregroundColor(.mateWhite)
+                .background(Color.mateBlueMedium) // Usamos mateBlueMedium
+                .foregroundColor(.mateWhite) // Usamos mateWhite
                 .cornerRadius(10)
             }
             .padding()
@@ -99,8 +92,7 @@ struct ResultCoinView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound()
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
         }
     }
 }
-

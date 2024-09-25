@@ -11,15 +11,15 @@ import SwiftUI
 func goldButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.white)
+            .foregroundColor(.mateWhite)
             .padding()
             .background(
                 Capsule()
-                    .fill(Color(red: 212/255, green: 175/255, blue: 55/255)) // Oro mate
+                    .fill(Color.mateGold) // Oro mate
             )
             .overlay(
                 Capsule()
-                    .stroke(Color.white, lineWidth: 2) // Borde blanco
+                    .stroke(Color.mateWhite, lineWidth: 2) // Borde blanco
             )
     }
 }
@@ -28,11 +28,11 @@ func goldButton(title: String, action: @escaping () -> Void) -> some View {
 func blueButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.white)
+            .foregroundColor(.mateWhite)
             .padding()
             .background(
                 Capsule()
-                    .fill(Color(red: 83/255, green: 143/255, blue: 213/255)) // Azul claro (Pantone 279 C)
+                    .fill(Color.mateBlueLight) // Azul claro (Pantone 279 C)
             )
     }
 }
@@ -41,12 +41,12 @@ func blueButton(title: String, action: @escaping () -> Void) -> some View {
 func gradientButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.white)
+            .foregroundColor(.mateWhite)
             .padding()
             .background(
                 LinearGradient(gradient: Gradient(colors: [
-                    Color(red: 83/255, green: 143/255, blue: 213/255), // Azul claro (Pantone 279 C)
-                    Color(red: 0/255, green: 91/255, blue: 171/255)   // Azul medio (Pantone 7687 C)
+                    Color.mateBlueLight, // Azul claro (Pantone 279 C)
+                    Color.mateBlueMedium   // Azul medio (Pantone 7687 C)
                 ]), startPoint: .topLeading, endPoint: .bottomTrailing)
             )
             .cornerRadius(10)
@@ -57,13 +57,13 @@ func gradientButton(title: String, action: @escaping () -> Void) -> some View {
 func borderedButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(Color(red: 0/255, green: 46/255, blue: 93/255)) // Azul oscuro (Pantone 288 C)
+            .foregroundColor(Color.mateBlueDark) // Azul oscuro (Pantone 288 C)
             .padding()
-            .background(Color.white)
+            .background(Color.mateWhite)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 0/255, green: 46/255, blue: 93/255), lineWidth: 2) // Borde azul oscuro
+                    .stroke(Color.mateBlueDark, lineWidth: 2) // Borde azul oscuro
             )
     }
 }
@@ -72,13 +72,13 @@ func borderedButton(title: String, action: @escaping () -> Void) -> some View {
 func borderedBlueButton(title: String, action: @escaping () -> Void) -> some View {
     Button(action: action) {
         Text(title)
-            .foregroundColor(.white)
+            .foregroundColor(.mateWhite)
             .padding()
-            .background(Color(red: 0/255, green: 91/255, blue: 171/255)) // Azul medio (Pantone 7687 C)
+            .background(Color.mateBlueMedium) // Azul medio (Pantone 7687 C)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 0/255, green: 46/255, blue: 93/255), lineWidth: 2) // Borde azul oscuro (Pantone 288 C)
+                    .stroke(Color.mateBlueDark, lineWidth: 2) // Borde azul oscuro (Pantone 288 C)
             )
     }
 }

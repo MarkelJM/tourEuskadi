@@ -14,10 +14,7 @@ struct ChallengeListView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común en lugar de una imagen
 
             VStack(spacing: 20) {
                 Text("Retos")
@@ -54,7 +51,7 @@ struct ChallengeListView: View {
                                 .padding(.trailing, 16)
                         }
                         .padding()
-                        .background(Color.gray)
+                        .background(Color.gray.opacity(0.7))
                         .cornerRadius(20)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 5)
@@ -83,7 +80,6 @@ struct ChallengeListView: View {
                 }
             }
             .padding(.horizontal)
-            //.padding(.top, 30)
         }
         .onAppear {
             viewModel.fetchChallenges()

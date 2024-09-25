@@ -13,7 +13,7 @@ class ChallengeListFirestoreManager {
 
     func fetchChallenges() -> AnyPublisher<[Challenge], Error> {
         Future { promise in
-            self.db.collection("challenges").getDocuments { snapshot, error in
+            self.db.collection("challengeEuskadi").getDocuments { snapshot, error in
                 if let error = error {
                     print("Error fetching challenges: \(error.localizedDescription)")
                     promise(.failure(error))

@@ -13,13 +13,9 @@ struct ChallengePresentationView: View {
     @StateObject var viewModel: ChallengePresentationViewModel
     let soundManager = SoundManager.shared
 
-
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
 
             VStack(spacing: 20) {
                 Spacer()
@@ -32,7 +28,7 @@ struct ChallengePresentationView: View {
                        }
                        .font(.headline)
                        .padding()
-                       .background(Color.mateGold)
+                       .background(Color.mateGold) // Usamos mateGold
                        .foregroundColor(.black)
                        .cornerRadius(10)
                    }
@@ -79,8 +75,8 @@ struct ChallengePresentationView: View {
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.mateRed)
-                            .foregroundColor(.white)
+                            .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                            .foregroundColor(.mateWhite) // Usamos mateWhite
                             .cornerRadius(10)
                             .padding(.horizontal, 20)
                     }

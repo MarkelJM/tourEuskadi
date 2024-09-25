@@ -15,7 +15,7 @@ struct AvatarSelectionView: View {
             Text("Selecciona tu Avatar")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.mateGold)
+                .foregroundColor(.mateGold) // Usamos mateGold
                 .padding()
 
             HStack {
@@ -63,4 +63,3 @@ struct AvatarSelectionView_Previews: PreviewProvider {
         AvatarSelectionView(selectedAvatar: $selectedAvatar)
     }
 }
-

@@ -13,16 +13,13 @@ struct PolicyView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
             
             ScrollView {
                 VStack(spacing: 20) {
                     Text("Términos y Condiciones")
                         .font(.largeTitle)
-                        .foregroundColor(.mateGold)
+                        .foregroundColor(.mateGold) // Usamos mateGold
                         .padding()
                     
                     WebView(url: url)

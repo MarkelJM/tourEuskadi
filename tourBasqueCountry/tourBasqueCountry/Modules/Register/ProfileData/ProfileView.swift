@@ -13,10 +13,8 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            // Fondo con gradiente suave o imagen de fondo
+            Fondo()
 
             ScrollView {
                 VStack(spacing: 20) {
@@ -27,52 +25,53 @@ struct ProfileView: View {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
                                 .padding()
-                                .background(Color.mateGold)
+                                .background(Color.mateGold) // Usamos mateGold
                                 .foregroundColor(.black)
                                 .cornerRadius(10)
                         }
                         Spacer()
                     }
+
                     Text("Perfil")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.mateGold)
+                        .foregroundColor(.mateGold) // Usamos mateGold
                         .padding(.top, 50)
 
                     TextField("Nombre", text: $viewModel.firstName)
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
 
                     TextField("Apellido", text: $viewModel.lastName)
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
 
                     DatePicker("Fecha de Nacimiento", selection: $viewModel.birthDate, displayedComponents: .date)
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
 
                     TextField("Código Postal", text: $viewModel.postalCode)
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
 
                     TextField("Ciudad", text: $viewModel.city)
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
 
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Selecciona tu provincia")
                             .font(.headline)
-                            .foregroundColor(.mateGold)
+                            .foregroundColor(.mateGold) // Usamos mateGold
                             .padding(.horizontal, 40)
 
                         Picker("Provincia", selection: $viewModel.province) {
@@ -82,7 +81,7 @@ struct ProfileView: View {
                         }
                         .pickerStyle(MenuPickerStyle())
                         .padding()
-                        .background(Color.mateWhite.opacity(0.8))
+                        .background(Color.mateWhite.opacity(0.8)) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
                     }
@@ -90,14 +89,21 @@ struct ProfileView: View {
                     AvatarSelectionView(selectedAvatar: $viewModel.avatar)
                         .padding()
 
-                    redBackgroundButton(title: "Guardar Perfil") {
+                    // Botón para guardar perfil
+                    Button(action: {
                         viewModel.saveUserProfile {
                             self.appState.currentView = .challengeList
                         }
+                    }) {
+                        Text("Guardar Perfil")
+                            .foregroundColor(.mateWhite) // Texto blanco
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.mateGold) // Fondo oro mate
+                            .cornerRadius(10)
                     }
                     .padding(.bottom, 50)
                     
-                    Spacer()
                     Spacer()
 
                     if viewModel.showError {
@@ -123,6 +129,8 @@ struct ProfileView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+
 
 #Preview {
     ProfileView(viewModel: ProfileViewModel())

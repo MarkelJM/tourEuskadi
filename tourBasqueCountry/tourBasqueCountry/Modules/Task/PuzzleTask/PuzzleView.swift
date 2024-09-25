@@ -14,11 +14,8 @@ struct PuzzleView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
+            Fondo() // Usamos el fondo común
+
             ScrollView {
                 VStack {
                     if viewModel.isLoading {
@@ -49,7 +46,7 @@ struct PuzzleView: View {
                                 }) {
                                     Text("Comprobar Puzzle")
                                         .padding()
-                                        .background(Color.mateRed)
+                                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium
                                         .foregroundColor(.mateWhite)
                                         .cornerRadius(10)
                                 }
@@ -134,7 +131,7 @@ struct PuzzleView: View {
                             .frame(height: 150)
                         }
                         .padding()
-                        .background(Color.black.opacity(0.5)) //VStack background opacity
+                        .background(Color.black.opacity(0.5)) // Fondo con opacidad para el VStack
                         .cornerRadius(20)
                         .sheet(isPresented: $viewModel.showSheet) {
                             ResulPuzzleSheetView(viewModel: viewModel)
@@ -159,6 +156,8 @@ struct PuzzleView: View {
     }
 }
 
+import SwiftUI
+
 struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
     @EnvironmentObject var appState: AppState
@@ -166,10 +165,7 @@ struct ResulPuzzleSheetView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Fondo común
 
             VStack {
                 Text(viewModel.alertMessage)
@@ -183,7 +179,7 @@ struct ResulPuzzleSheetView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }

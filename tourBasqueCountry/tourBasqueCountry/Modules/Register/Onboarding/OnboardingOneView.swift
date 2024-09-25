@@ -12,11 +12,9 @@ struct OnboardingOneView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
+            // Fondo con imagen
+            Fondo()
+
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
@@ -27,7 +25,7 @@ struct OnboardingOneView: View {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)
                                     .padding()
-                                    .background(Color.mateGold)
+                                    .background(Color.mateGold) // Usamos mateGold
                                     .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .padding(.top, 50)
@@ -37,7 +35,7 @@ struct OnboardingOneView: View {
                         VStack(alignment: .leading, spacing: 20) {
                             Text("Bienvenido a nuestra historia")
                                 .font(.title)
-                                .foregroundColor(.mateGold)
+                                .foregroundColor(.mateGold) // Usamos mateGold
                                 .padding(.top, 40)
                             
                             Text("""
@@ -46,14 +44,10 @@ struct OnboardingOneView: View {
                                 ¡Vamos a la Conquista de CyL!
                                 """)
                                 .font(.body)
-                                .foregroundColor(.mateWhite)
+                                .foregroundColor(.mateWhite) // Usamos mateWhite
                         }
                         .padding()
                     }
-                    
-
-                    
-                    
                 }
                 
                 Spacer()
@@ -63,15 +57,15 @@ struct OnboardingOneView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
-                        .foregroundColor(.mateWhite)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .foregroundColor(.mateWhite) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
                 Spacer()
             }
             .padding()
-            .background(Color.black.opacity(0.6))  // Fondo con opacidad
+            .background(Color.black.opacity(0.6)) // Fondo con opacidad
             .cornerRadius(20)
             .padding()
         }

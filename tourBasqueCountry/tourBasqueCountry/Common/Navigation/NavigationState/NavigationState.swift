@@ -27,8 +27,11 @@ struct NavigationState: View {
     var body: some View {
         VStack(spacing: 0) {
             // Colocar el CustomTabBar en la parte superior
-            CustomTabBar(selectedTab: $appState.currentView)
-                .zIndex(1)  // Asegura que el CustomTabBar esté por encima de otras vistas
+            if shouldShowTabBar {
+                CustomTabBar(selectedTab: $appState.currentView)
+                    .zIndex(1)  // Asegura que el CustomTabBar esté por encima de otras vistas
+            }
+
             
             // Espacio para el contenido
             Spacer(minLength: 0)
@@ -39,7 +42,7 @@ struct NavigationState: View {
                 .padding(.top, 0) // Para que el contenido no se superponga al CustomTabBar
         }
         //.edgesIgnoringSafeArea(.top) // Ignorar las áreas seguras para el tab bar
-        .padding(.top, 110)
+        .padding(.top, 50)
         .edgesIgnoringSafeArea(.top)
         .onAppear {
             print("Current AppState in NavigationState: \(appState.currentView)")

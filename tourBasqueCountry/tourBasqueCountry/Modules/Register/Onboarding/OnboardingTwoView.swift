@@ -13,15 +13,11 @@ struct OnboardingTwoView: View {
     var body: some View {
         ZStack {
             // Fondo de pantalla
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
+            Fondo()
+
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        
                         HStack {
                             Button(action: {
                                 appState.currentView = .onboardingOne
@@ -29,28 +25,25 @@ struct OnboardingTwoView: View {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)
                                     .padding()
-                                    .background(Color.mateGold)
+                                    .background(Color.mateGold) // Usamos mateGold
                                     .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .padding(.top, 50)
-
-                                
-                                
                             }
                             Spacer()
                         }
+                        
                         Text("Continuación de la historia")
                             .font(.title)
-                            .foregroundColor(.mateGold)
+                            .foregroundColor(.mateGold) // Usamos mateGold
                             .padding(.top, 40)
                         
                         Text("""
                             Elige el reto y conquista uno por uno cada territorio. Tras finalizar cada reto conseguirás una recompensa.
-                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento CyL
-
+                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento CyL.
                             """)
                             .font(.body)
-                            .foregroundColor(.mateWhite)
+                            .foregroundColor(.mateWhite) // Usamos mateWhite
                     }
                     .padding()
                 }
@@ -62,15 +55,15 @@ struct OnboardingTwoView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
-                        .foregroundColor(.mateWhite)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .foregroundColor(.mateWhite) // Usamos mateWhite
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
                 Spacer()
             }
             .padding()
-            .background(Color.black.opacity(0.6))  // Fondo con opacidad
+            .background(Color.black.opacity(0.6)) // Fondo con opacidad
             .cornerRadius(20)
             .padding()
         }

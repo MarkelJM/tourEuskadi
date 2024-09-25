@@ -62,6 +62,7 @@ struct ChallengeRewardView: View {
 }
 
 
+
 struct ResultChallengeRewardView: View {
     @ObservedObject var viewModel: ChallengeRewardViewModel
     @EnvironmentObject var appState: AppState
@@ -69,10 +70,7 @@ struct ResultChallengeRewardView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Usamos el fondo común
             
             VStack {
                 Text(viewModel.resultMessage)
@@ -85,8 +83,8 @@ struct ResultChallengeRewardView: View {
                     appState.currentView = .map
                 }
                 .padding()
-                .background(Color.mateRed)
-                .foregroundColor(.mateWhite)
+                .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                .foregroundColor(.mateWhite) // Usamos mateWhite
                 .cornerRadius(10)
             }
             .padding()

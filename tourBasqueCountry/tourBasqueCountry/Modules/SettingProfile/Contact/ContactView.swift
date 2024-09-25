@@ -20,7 +20,7 @@ struct ContactSheetView: View {
 
             Text("Email de contacto: conquistacyl@gmail.com")
                 .font(.headline)
-                .foregroundColor(.blue)
+                .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
                 .padding()
 
             Spacer()

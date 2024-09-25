@@ -15,11 +15,8 @@ struct TermsAndConditionsView: View {
     
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
+            Fondo()
+
             ScrollView {
                 VStack(spacing: 20) {
                     HStack {
@@ -29,18 +26,19 @@ struct TermsAndConditionsView: View {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
                                 .padding()
-                                .background(Color.mateGold)
+                                .background(Color.mateGold) // Usamos mateGold
                                 .foregroundColor(.black)
                                 .cornerRadius(10)
                         }
                         Spacer()
                     }
                     .padding([.top, .leading], 20)
+                    
                     Spacer()
                     
                     Text("Términos y Condiciones")
                         .font(.largeTitle)
-                        .foregroundColor(.mateGold)
+                        .foregroundColor(.mateGold) // Usamos mateGold
                         .padding()
                     
                     // Aquí va la WebView que carga el enlace
@@ -57,13 +55,13 @@ struct TermsAndConditionsView: View {
                     }) {
                         Text("Aceptar")
                             .padding()
-                            .background(Color.mateRed)
-                            .foregroundColor(.mateWhite)
+                            .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                            .foregroundColor(.mateWhite) // Usamos mateWhite
                             .cornerRadius(10)
                     }
                     .padding(.bottom, 50)
                 }
-                .background(Color.black.opacity(0.5))
+                .background(Color.black.opacity(0.5)) // Fondo con opacidad
                 .cornerRadius(20)
                 .padding()
             }

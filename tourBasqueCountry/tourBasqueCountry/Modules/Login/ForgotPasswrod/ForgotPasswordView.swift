@@ -14,10 +14,8 @@ struct ForgotPasswordView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            // Fondo con gradiente suave
+            Fondo()
             
             VStack(spacing: 20) {
                 HStack {
@@ -27,7 +25,7 @@ struct ForgotPasswordView: View {
                         Image(systemName: "chevron.left")
                             .font(.headline)
                             .padding()
-                            .background(Color.mateGold)
+                            .background(Color.mateGold) // Usamos el color mateGold
                             .foregroundColor(.black)
                             .cornerRadius(10)
                     }
@@ -38,23 +36,24 @@ struct ForgotPasswordView: View {
                 
                 Text("Restablecer Contraseña")
                     .font(.largeTitle)
-                    .foregroundColor(.mateGold)
+                    .foregroundColor(.mateGold) // Usamos el color mateGold
                     .padding(.top, 40)
 
                 TextField("Introduce tu Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .background(Color.white.opacity(0.8))
+                    .background(Color.mateWhite.opacity(0.8)) // Usamos el color mateWhite
                     .cornerRadius(10)
 
+                // Botón para enviar enlace de restablecimiento usando los colores de la extensión
                 Button(action: {
                     viewModel.resetPassword(email: email)
                 }) {
                     Text("Enviar Enlace de Restablecimiento")
+                        .foregroundColor(.mateWhite) // Texto blanco
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.mateRed)
-                        .foregroundColor(.mateWhite)
+                        .background(Color.mateWhite) // Fondo rojo mate
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)

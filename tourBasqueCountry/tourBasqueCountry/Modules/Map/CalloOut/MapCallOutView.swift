@@ -22,8 +22,8 @@ struct MapCallOutView: View {
                 Text(reward.challengeTitle)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.mateRed)
-                
+                    .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
+
                 Text(reward.abstract)
                     .font(.body)
                     .foregroundColor(.black)
@@ -54,7 +54,7 @@ struct MapCallOutView: View {
                 Text(spot.name)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.mateRed)
+                    .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
                 
                 Text(spot.abstract)
                     .font(.body)
@@ -87,7 +87,7 @@ struct MapCallOutView: View {
                         .font(.headline)
                         .foregroundColor(.mateWhite)
                         .padding()
-                        .background(Color.mateRed)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
                         .cornerRadius(10)
                         .shadow(radius: 5)
                 }

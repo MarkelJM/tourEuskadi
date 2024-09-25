@@ -17,7 +17,7 @@ struct EventView: View {
     // Estados para los filtros
     @State private var selectedDate: Date? = nil // Filtro de fecha (opcional)
     @State private var selectedDistance: Double? = nil // Filtro de distancia (opcional)
-    let distanceOptions: [Double] = [10, 20, 50, 100, 200] // Opciones de distancia en km como Double
+    let distanceOptions: [Double] = [10, 20, 50, 100, 200] // Opciones de distancia en km
 
     @State private var showingDistanceFilter = false // Mostrar filtro de distancia
     @State private var showingDateFilter = false // Mostrar filtro de fecha
@@ -26,12 +26,12 @@ struct EventView: View {
         VStack {
             // Botón para cargar todos los eventos sin filtros
             Button(action: {
-                viewModel.loadAllEvents() // Llamar al método para cargar todos los eventos
+                viewModel.loadAllEvents() // Cargar todos los eventos
             }) {
                 Text("Mostrar Todos los Eventos")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue)
+                    .background(Color.mateBlueMedium) // Usamos mateBlueMedium
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
@@ -50,7 +50,6 @@ struct EventView: View {
                 }
                 .sheet(isPresented: $showingDistanceFilter) {
                     DistanceFilterView(selectedDistance: Binding($selectedDistance, replacingNilWith: 50), options: distanceOptions) {
-                        // Aplicar filtro cuando el usuario selecciona la distancia
                         viewModel.applyFilters(date: selectedDate, distance: selectedDistance, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                     }
                 }
@@ -68,7 +67,6 @@ struct EventView: View {
                     DatePicker("Selecciona una fecha", selection: Binding($selectedDate, replacingNilWith: Date()), displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .onChange(of: selectedDate) { _ in
-                            // Aplicar filtro cuando el usuario selecciona la fecha
                             viewModel.applyFilters(date: selectedDate, distance: selectedDistance, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                         }
                         .padding()
@@ -79,20 +77,20 @@ struct EventView: View {
             // Botón para quitar filtros
             HStack {
                 Button(action: {
-                    selectedDistance = nil // Quitar filtro de distancia
+                    selectedDistance = nil
                     viewModel.applyFilters(date: selectedDate, distance: nil, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                 }) {
                     Text("Quitar Filtro de Distancia")
-                        .foregroundColor(.red)
+                        .foregroundColor(.mateBlueDark)
                 }
                 .padding()
 
                 Button(action: {
-                    selectedDate = nil // Quitar filtro de fecha
+                    selectedDate = nil
                     viewModel.applyFilters(date: nil, distance: selectedDistance, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                 }) {
                     Text("Quitar Filtro de Fecha")
-                        .foregroundColor(.red)
+                        .foregroundColor(.mateBlueDark)
                 }
                 .padding()
             }
@@ -169,7 +167,7 @@ struct DistanceFilterView: View {
                 Text("Aplicar filtro")
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue)
+                    .background(Color.mateGold) // Usamos mateGold para coherencia
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding()

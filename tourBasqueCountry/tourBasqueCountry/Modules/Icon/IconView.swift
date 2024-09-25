@@ -14,10 +14,8 @@ struct IconView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            // Fondo con gradiente suave
+            Fondo()
 
             VStack {
                 Spacer()
@@ -26,12 +24,12 @@ struct IconView: View {
                     Text("Bienvenido a ConquistaCyL")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.mateGold)
+                        .foregroundColor(.mateGold) // Usamos el color mateGold
                         .padding(.top, 20)
                     
                     Text("¡Logra todos tus retos!")
                         .font(.title2)
-                        .foregroundColor(.mateGold)
+                        .foregroundColor(.mateGold) // Usamos el color mateGold
                         .padding(.bottom, 20)
                 }
                 .padding(30)
@@ -39,7 +37,7 @@ struct IconView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.mateGold, lineWidth: 2)
+                        .stroke(Color.mateGold, lineWidth: 2) // Usamos el color mateGold
                 )
                 .padding(.horizontal, 40)
 
@@ -54,7 +52,7 @@ struct IconView: View {
                 Spacer()
 
                 ProgressView(value: progress)
-                    .progressViewStyle(LinearProgressViewStyle(tint: .mateGold))
+                    .progressViewStyle(LinearProgressViewStyle(tint: .mateGold)) // Usamos el color mateGold
                     .frame(width: 200)
                     .padding(.bottom, 40)
             }

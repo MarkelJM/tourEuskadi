@@ -14,10 +14,7 @@ struct DatesOrderView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                Image("fondoSolar")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
+                Fondo() // Usamos el fondo común
                 
                 VStack(spacing: 10) {
                     
@@ -38,7 +35,7 @@ struct DatesOrderView: View {
                         }) {
                             Text("Comprobar")
                                 .padding()
-                                .background(Color.mateRed)
+                                .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
                                 .foregroundColor(.mateWhite)
                                 .cornerRadius(10)
                         }
@@ -67,10 +64,10 @@ struct DatesOrderView: View {
                                 }) {
                                     Text(option)
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.mateWhite)
                                         .padding()
                                         .frame(maxWidth: .infinity)
-                                        .background(viewModel.selectedEvents.contains(option) ? Color.mateGreen : Color.mateBlue)
+                                        .background(viewModel.selectedEvents.contains(option) ? Color.mateGold : Color.mateBlueMedium)
                                         .cornerRadius(10)
                                 }
                             }
@@ -80,7 +77,7 @@ struct DatesOrderView: View {
                                 }) {
                                     Text("Comprobar")
                                         .padding()
-                                        .background(Color.mateRed)
+                                        .background(Color.mateBlueMedium)
                                         .foregroundColor(.mateWhite)
                                         .cornerRadius(10)
                                 }
@@ -90,7 +87,7 @@ struct DatesOrderView: View {
                                 }) {
                                     Text("Deshacer")
                                         .padding()
-                                        .background(Color.mateRed)
+                                        .background(Color.mateBlueMedium)
                                         .foregroundColor(.mateWhite)
                                         .cornerRadius(10)
                                         .opacity(0.5)
@@ -115,7 +112,6 @@ struct DatesOrderView: View {
     }
 }
 
- 
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
     @EnvironmentObject var appState: AppState
@@ -123,10 +119,7 @@ struct ResultDatesOrderView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo() // Fondo común
 
             VStack {
                 Text(viewModel.alertMessage)
@@ -139,7 +132,7 @@ struct ResultDatesOrderView: View {
                         if let informationDetail = viewModel.dateEvent?.informationDetail {
                             Text(informationDetail)
                                 .font(.body)
-                                .foregroundColor(.white)
+                                .foregroundColor(.mateWhite)
                                 .multilineTextAlignment(.center)
                                 .padding()
                         }
@@ -150,11 +143,10 @@ struct ResultDatesOrderView: View {
                 Button(action: {
                     viewModel.showResultAlert = false
                     appState.currentView = .mapContainer
-
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateRed)
+                        .background(Color.mateBlueMedium)
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }

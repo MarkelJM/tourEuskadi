@@ -131,7 +131,7 @@ class FirestoreManager {
         
         return Future { promise in
             userRef.updateData([
-                "challenges.\(challenge)": FieldValue.arrayUnion([taskID])
+                "challengeEuskadi.\(challenge)": FieldValue.arrayUnion([taskID])
             ]) { error in
                 if let error = error {
                     promise(.failure(error))
@@ -287,7 +287,7 @@ class FirestoreManager {
                     var data = document.data() ?? [:]
                     
                     // Actualizar el campo "challenges" en Firestore
-                    data["challenges"] = user.challenges
+                    data["challengeEuskadi"] = user.challenges
                     
                     userRef.setData(data) { error in
                         if let error = error {
