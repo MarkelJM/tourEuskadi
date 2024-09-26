@@ -29,16 +29,16 @@ class ChallengePresentationViewModel: BaseViewModel {
             return Fail(error: NSError(domain: "No user or challenge available", code: -1, userInfo: nil))
                 .eraseToAnyPublisher()
         }
-        
-        // adding challengeName if is empty
+
+        // Asegúrate de que el desafío esté en el perfil del usuario si no está ya
         if user.challenges[challengeName] == nil {
-            user.challenges[challengeName] = [] // INITIAL EMPTY ARRAY
+            user.challenges[challengeName] = [] // Inicializa con un array vacío
         }
 
-        // saves challengename in userdefaul to use in maocontainer
+        // Guarda el nombre del desafío en UserDefaults
         userDefaultsManager.saveChallengeName(challengeName)
 
-        
+        // Guarda el estado del desafío en Firestore
         return saveUserChallengeState(user: user)
             .handleEvents(receiveOutput: {
                 print("Challenge state saved in Firestore")

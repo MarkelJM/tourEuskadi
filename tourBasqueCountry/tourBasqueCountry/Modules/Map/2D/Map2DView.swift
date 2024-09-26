@@ -30,7 +30,46 @@ struct Map2DView: View {
                 } else {
                     Map(coordinateRegion: $viewModel.region2D, annotationItems: viewModel.mapAnnotations + [viewModel.userLocationAnnotation].compactMap { $0 }) { annotation in
                         MapAnnotation(coordinate: annotation.coordinate) {
-                            // Aquí manejas la visualización de las anotaciones
+                            if annotation.isUserLocation {
+                                // Muestra el avatar del usuario en su ubicación
+                                Image(viewModel.user?.avatar.rawValue ?? "defaultAvatar")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                            } else if let reward = annotation.reward {
+                                Image(systemName: "trophy.circle.fill")
+                                    .resizable()
+                                    .foregroundColor(.yellow)
+                                    .frame(width: 40, height: 40)
+                                    .onTapGesture {
+                                        selectedReward = reward
+                                    }
+                            } else if viewModel.isTaskCompleted(spotID: annotation.spot?.id ?? "") {
+                                Circle()
+                                    .fill(Color.green)
+                                    .frame(width: 30, height: 30)
+                                    .overlay(
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.white)
+                                    )
+                                    .onTapGesture {
+                                        selectedSpot = annotation.spot
+                                    }
+                            } else {
+                                AsyncImage(url: URL(string: annotation.image)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 30, height: 30)
+                                        .clipShape(Circle())
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .onTapGesture {
+                                    selectedSpot = annotation.spot
+                                }
+                            }
                         }
                     }
                     .onAppear {

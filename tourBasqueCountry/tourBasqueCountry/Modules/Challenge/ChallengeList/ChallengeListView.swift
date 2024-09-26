@@ -57,7 +57,7 @@ struct ChallengeListView: View {
                         .padding(.horizontal, 5)
                         .onTapGesture {
                             soundManager.playButtonSound()
-
+                            
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
                                 viewModel.selectChallenge(challenge)
                                 appState.currentView = .mapContainer
