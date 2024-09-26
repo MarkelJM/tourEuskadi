@@ -30,7 +30,7 @@ class Map2DViewModel: BaseMapViewModel {
     override func updateRegionWithUserLocation(_ coordinate: CLLocationCoordinate2D) {
         self.region2D.center = coordinate
         self.centerCoordinate = coordinate  // Sincroniza el centro en BaseMapViewModel
-        print("2D Map region updated with user location: \(coordinate.latitude), \(coordinate.longitude)")
+        //print("2D Map region updated with user location: \(coordinate.latitude), \(coordinate.longitude)")
     }
 
     // Actualiza el nivel de zoom del mapa 2D

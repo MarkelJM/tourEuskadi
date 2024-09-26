@@ -13,16 +13,25 @@ class DatesOrderFirestoreManager {
     private let db = Firestore.firestore()
     
     func fetchDateEventById(_ id: String) -> AnyPublisher<DateEvent, Error> {
-        Future { promise in
+        print("Fetching DateEvent with ID: \(id)")
+        
+        return Future { promise in
             self.db.collection("dates").document(id).getDocument { document, error in
-                if let document = document, document.exists, let data = document.data() {
-                    if let dateEvent = DateEvent(from: data) {
+                if let error = error {
+                    print("Error fetching document: \(error.localizedDescription)")
+                    promise(.failure(error))
+                } else if let document = document, document.exists {
+                    print("Document data: \(document.data() ?? [:])")
+                    if let dateEvent = DateEvent(from: document.data() ?? [:]) {
+                        print("Successfully decoded DateEvent")
                         promise(.success(dateEvent))
                     } else {
+                        print("Failed to decode DateEvent from document data")
                         promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode dateEvent"])))
                     }
                 } else {
-                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
+                    print("Document does not exist for ID: \(id)")
+                    promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }

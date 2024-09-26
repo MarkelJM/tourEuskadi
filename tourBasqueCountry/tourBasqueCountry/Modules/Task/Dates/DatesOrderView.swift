@@ -62,15 +62,30 @@ struct DatesOrderView: View {
                                 Button(action: {
                                     viewModel.selectEvent(option)
                                 }) {
-                                    Text(option)
-                                        .font(.headline)
-                                        .foregroundColor(.mateWhite)
-                                        .padding()
-                                        .frame(maxWidth: .infinity)
-                                        .background(viewModel.selectedEvents.contains(option) ? Color.mateGold : Color.mateBlueMedium)
-                                        .cornerRadius(10)
+                                    HStack {
+                                        Text(option)
+                                            .font(.headline)
+                                            .foregroundColor(.mateWhite)
+                                            .padding()
+
+                                        // Mostrar el número de orden junto a las opciones seleccionadas
+                                        if let index = viewModel.selectedEvents.firstIndex(of: option) {
+                                            Text("\(index + 1)")
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                                .padding(8)
+                                                .background(Color.mateGold)
+                                                .clipShape(Circle())
+                                        }
+                                        
+                                        Spacer()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .background(viewModel.selectedEvents.contains(option) ? Color.mateGold : Color.mateBlueMedium)
+                                    .cornerRadius(10)
                                 }
                             }
+
                             HStack {
                                 Button(action: {
                                     viewModel.checkAnswer()
@@ -103,7 +118,6 @@ struct DatesOrderView: View {
                 .sheet(isPresented: $viewModel.showResultAlert) {
                     ResultDatesOrderView(viewModel: viewModel)
                 }
-                
             }
             .onAppear {
                 viewModel.fetchDateEvent()

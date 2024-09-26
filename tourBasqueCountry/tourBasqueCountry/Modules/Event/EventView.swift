@@ -80,8 +80,12 @@ struct EventView: View {
                     selectedDistance = nil
                     viewModel.applyFilters(date: selectedDate, distance: nil, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                 }) {
-                    Text("Quitar Filtro de Distancia")
-                        .foregroundColor(.mateBlueDark)
+                    HStack {
+                        Image(systemName: "xmark.circle.fill") // Símbolo de "quitar"
+                            .foregroundColor(.red)
+                        Text("Quitar Distancia")
+                            .foregroundColor(.red) // Cambiar el color del texto a rojo
+                    }
                 }
                 .padding()
 
@@ -89,8 +93,12 @@ struct EventView: View {
                     selectedDate = nil
                     viewModel.applyFilters(date: nil, distance: selectedDistance, userLocation: locationManager.location ?? CLLocation(latitude: 43.3167, longitude: -1.9836))
                 }) {
-                    Text("Quitar Filtro de Fecha")
-                        .foregroundColor(.mateBlueDark)
+                    HStack {
+                        Image(systemName: "xmark.circle.fill") // Símbolo de "quitar"
+                            .foregroundColor(.red)
+                        Text("Quitar fecha")
+                            .foregroundColor(.red) // Cambiar el color del texto a rojo
+                    }
                 }
                 .padding()
             }

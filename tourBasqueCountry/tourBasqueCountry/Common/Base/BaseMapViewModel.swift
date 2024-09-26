@@ -67,7 +67,7 @@ class BaseMapViewModel: BaseViewModel {
                 self.userLocationAnnotation = UnifiedAnnotation(userLocation: location.coordinate, avatarImage: avatarImage)
 
                 // Print para verificar la ubicación actualizada
-                print("User location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+                //print("User location updated: \(location.coordinate.latitude), \(location.coordinate.longitude)")
             }
             .store(in: &cancellables)
     }
@@ -108,6 +108,8 @@ class BaseMapViewModel: BaseViewModel {
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(let error):
+                    print("Error fetching spots: \(error.localizedDescription)")
+
                     self?.errorMessage = error.localizedDescription
                 case .finished:
                     break
@@ -133,9 +135,11 @@ class BaseMapViewModel: BaseViewModel {
         guard let user = user else { return }
 
         let completedSpotIDs = user.spotIDs
-        print("Adding spots to map...")  // <-- Añade esta línea
+        print("Adding spots to map, user has completed spots: \(completedSpotIDs.count)")
 
         for spot in spots {
+            print("Processing spot: \(spot.id) - \(spot.name)")
+
             var annotation = UnifiedAnnotation(spot: spot)
 
             if completedSpotIDs.contains(spot.id) {

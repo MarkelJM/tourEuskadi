@@ -225,11 +225,11 @@ struct ChallengeStatView: View {
         VStack {
             Text(challenge)
                 .font(.headline)
-                .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
+                .foregroundColor(.mateBlueLight) // Usamos mateBlueMedium
             Text("\(count) tareas completadas")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.mateBlueDark) // Usamos mateBlueDark en lugar de mateRed
+                .foregroundColor(.mateWhite) // Usamos mateBlueDark en lugar de mateRed
         }
     }
 }

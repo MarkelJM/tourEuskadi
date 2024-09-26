@@ -108,6 +108,8 @@ struct MapCallOutView: View {
     }
 
     private func navigateToActivity(for spot: Spot) {
+        print("Navigating to activity: \(spot.activityType) with activityID: \(spot.activityID)")
+
         switch spot.activityType {
         case "puzzles":
             appState.currentView = .puzzle(id: spot.activityID)
