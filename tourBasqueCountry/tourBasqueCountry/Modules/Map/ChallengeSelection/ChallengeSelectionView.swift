@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChallengeSelectionView: View {
-    @ObservedObject var viewModel: MapViewModel
+    @ObservedObject var viewModel: Map2DViewModel
 
     var body: some View {
         VStack {

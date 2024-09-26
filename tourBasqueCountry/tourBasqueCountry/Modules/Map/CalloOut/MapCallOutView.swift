@@ -12,7 +12,7 @@ struct MapCallOutView: View {
     var reward: ChallengeReward?
     var challenge: String?
     @EnvironmentObject var appState: AppState
-    @ObservedObject var viewModel: MapViewModel
+    @ObservedObject var viewModel: BaseMapViewModel // Cambio aquí
     @State private var showCompletedAlert = false
     let soundManager = SoundManager.shared
 
@@ -22,7 +22,7 @@ struct MapCallOutView: View {
                 Text(reward.challengeTitle)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
+                    .foregroundColor(.mateBlueMedium)
 
                 Text(reward.abstract)
                     .font(.body)
@@ -54,7 +54,7 @@ struct MapCallOutView: View {
                 Text(spot.name)
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundColor(.mateBlueMedium) // Usamos mateBlueMedium
+                    .foregroundColor(.mateBlueMedium)
                 
                 Text(spot.abstract)
                     .font(.body)
@@ -87,7 +87,7 @@ struct MapCallOutView: View {
                         .font(.headline)
                         .foregroundColor(.mateWhite)
                         .padding()
-                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .background(Color.mateBlueMedium)
                         .cornerRadius(10)
                         .shadow(radius: 5)
                 }

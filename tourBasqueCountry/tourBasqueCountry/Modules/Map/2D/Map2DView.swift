@@ -9,14 +9,14 @@ import SwiftUI
 import MapKit
 
 struct Map2DView: View {
-    @StateObject private var viewModel = MapViewModel(appState: AppState())
+    @StateObject private var viewModel = Map2DViewModel(appState: AppState())
     @State private var selectedSpot: Spot?
     @State private var selectedReward: ChallengeReward?
     @EnvironmentObject var appState: AppState
 
     var body: some View {
         ZStack {
-            Fondo() // Usamos el fondo común
+            Fondo() // Fondo de la vista
 
             VStack {
                 if let errorMessage = viewModel.errorMessage {
@@ -30,7 +30,7 @@ struct Map2DView: View {
                 } else {
                     Map(coordinateRegion: $viewModel.region2D, annotationItems: viewModel.mapAnnotations + [viewModel.userLocationAnnotation].compactMap { $0 }) { annotation in
                         MapAnnotation(coordinate: annotation.coordinate) {
-                            // Lógica de anotación aquí
+                            // Aquí manejas la visualización de las anotaciones
                         }
                     }
                     .onAppear {

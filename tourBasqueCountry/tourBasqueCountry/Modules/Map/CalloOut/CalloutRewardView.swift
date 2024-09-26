@@ -10,10 +10,9 @@ import SwiftUI
 struct CalloutRewardView: View {
     var reward: ChallengeReward
     var challenge: String
-    @ObservedObject var viewModel: MapViewModel
+    @ObservedObject var viewModel: BaseMapViewModel // Cambio aquí
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
-
 
     var body: some View {
         VStack(spacing: 20) {
@@ -27,20 +26,6 @@ struct CalloutRewardView: View {
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-            /*
-            AsyncImage(url: URL(string: reward.prizeImage)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding(.horizontal)
-            } placeholder: {
-                ProgressView()
-                    .frame(width: 100, height: 100)
-            }
-             */
             
             Spacer()
             Button(action: {

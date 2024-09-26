@@ -143,6 +143,7 @@
 		D3548B2D2CA172820019F58C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3548B2C2CA172820019F58C /* FirebaseStorage */; };
 		D3548B302CA172880019F58C /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D3548B2F2CA172880019F58C /* KeychainSwift */; };
 		D3548B332CA172900019F58C /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = D3548B322CA172900019F58C /* ZIPFoundation */; };
+		D3548B352CA47CED0019F58C /* BaseMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3548B342CA47CED0019F58C /* BaseMapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -276,6 +277,7 @@
 		D3548AF92C9D89C20019F58C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		D3548AFC2C9D8BF90019F58C /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		D3548AFE2C9DE15A0019F58C /* fondo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fondo.swift; sourceTree = "<group>"; };
+		D3548B342CA47CED0019F58C /* BaseMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				D35489C32C9C3E9A0019F58C /* BaseViewModel.swift */,
+				D3548B342CA47CED0019F58C /* BaseMapViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 				D3548A312C9C749A0019F58C /* TakePhotoViewModel.swift in Sources */,
 				D3548A572C9C780E0019F58C /* Map3DFirestoreManager.swift in Sources */,
 				D3548A1A2C9C73480019F58C /* DatesOrderView.swift in Sources */,
+				D3548B352CA47CED0019F58C /* BaseMapViewModel.swift in Sources */,
 				D3548AF12C9D75240019F58C /* EventWebView.swift in Sources */,
 				D3548A442C9C75AF0019F58C /* SettingProfileViewModel.swift in Sources */,
 				D35489C42C9C3E9A0019F58C /* BaseViewModel.swift in Sources */,
