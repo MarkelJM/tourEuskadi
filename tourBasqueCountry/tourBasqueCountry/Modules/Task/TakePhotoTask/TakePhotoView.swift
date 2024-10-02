@@ -103,53 +103,42 @@ struct TakePhotoView: View {
 
 
 
+import SwiftUI
+
 struct ResultTakePhotoView: View {
     @ObservedObject var viewModel: TakePhotoViewModel
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
+    @State private var showTranslationSheet = false // Estado para controlar la apertura del sheet
 
     var body: some View {
         ZStack {
             Fondo() // Usamos el fondo común
 
             VStack {
-                // Menú desplegable de idiomas
-                HStack {
-                    Text("Seleccionar idioma:")
-                        .foregroundColor(.mateGold)
-
-                    Menu {
-                        ForEach(viewModel.availableLanguages, id: \.self) { language in
-                            Button(action: { viewModel.changeLanguage(to: language, for: viewModel.activityId) }) {
-                                Text(language.capitalized)  // Mostramos el nombre del idioma
-                            }
-                        }
-                    } label: {
-                        Label("Idioma", systemImage: "globe")
-                    }
-                    .padding(.trailing, 20)
-                }
-                .padding()
-
-                // Mostrar la traducción si existe
-                if let translation = viewModel.translation {
-                    Text(translation.text)
-                        .font(.title)
-                        .foregroundColor(.mateGold)
-                        .padding()
-
-                    if let url = translation.url, let urlLink = URL(string: url) {
-                        Link("Más información", destination: urlLink)
-                            .foregroundColor(.blue)
+                ScrollView {
+                    // Mostrar el contenido en Español (informationDetail)
+                    if let takePhoto = viewModel.takePhoto {
+                        Text(takePhoto.informationDetail)
+                            .font(.title)
+                            .foregroundColor(.mateGold)
                             .padding()
                     }
-                } else {
-                    Text(viewModel.alertMessage)
-                        .font(.title)
-                        .foregroundColor(.mateGold)
-                        .padding()
                 }
 
+                // Botón para mostrar la traducción en Euskera
+                Button(action: {
+                    viewModel.fetchTranslationForActivity(activityId: viewModel.activityId) // Cargar la traducción
+                    showTranslationSheet = true // Mostrar el sheet para traducción
+                }) {
+                    Label("Mostrar traducción en Euskera", systemImage: "globe")
+                        .padding()
+                        .background(Color.mateBlueMedium)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
+
+                // Botón para continuar
                 Button(action: {
                     viewModel.showResultModal = false
                     appState.currentView = .mapContainer
@@ -166,10 +155,66 @@ struct ResultTakePhotoView: View {
             .cornerRadius(20)
             .padding()
         }
+        // Mostrar el sheet para la traducción
+        .sheet(isPresented: $showTranslationSheet) {
+            TranslationSheetTakePhotoView(viewModel: viewModel) // Sheet personalizado para la traducción
+        }
         .onAppear {
             soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
-            viewModel.fetchAvailableLanguages() // Cargar los idiomas disponibles
-            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
+    }
+}
+
+
+
+struct TranslationSheetTakePhotoView: View {
+    @ObservedObject var viewModel: TakePhotoViewModel
+
+    var body: some View {
+        VStack {
+            // Menú para seleccionar idioma
+            HStack {
+                Text("Mostrar traducción:")
+                    .foregroundColor(.mateGold)
+            }
+            .padding()
+
+            // Contenido dentro de un ScrollView para manejar traducciones largas
+            ScrollView {
+                VStack(alignment: .leading) {
+                    // Mostrar la traducción si existe
+                    if let translation = viewModel.translation {
+                        Text(translation.text)
+                            .font(.title)
+                            .padding()
+                            .foregroundColor(.mateGold)
+
+                        if let url = translation.url, let urlLink = URL(string: url) {
+                            Link("Más información", destination: urlLink)
+                                .foregroundColor(.blue)
+                                .padding()
+                        }
+                    } else {
+                        Text("No hay traducción disponible")
+                            .font(.title)
+                            .padding()
+                            .foregroundColor(.mateGold)
+                    }
+                }
+            }
+            .padding()
+
+            // Botón para cerrar el sheet
+            Button(action: {
+                viewModel.showResultModal = false // Cerrar el sheet
+            }) {
+                Text("Cerrar")
+                    .padding()
+                    .background(Color.mateBlueMedium)
+                    .foregroundColor(.mateWhite)
+                    .cornerRadius(10)
+            }
+        }
+        .padding()
     }
 }

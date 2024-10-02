@@ -10,6 +10,9 @@
 		D30CCB872CAD6119002730F9 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB862CAD6119002730F9 /* Translate.swift */; };
 		D30CCB892CAD613C002730F9 /* Translate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB882CAD613C002730F9 /* Translate+Firebase.swift */; };
 		D30CCB8C2CAD64A0002730F9 /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB8B2CAD64A0002730F9 /* TranslationManager.swift */; };
+		D30CCB8F2CAD8156002730F9 /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB8E2CAD8156002730F9 /* TranslationView.swift */; };
+		D30CCB912CAD8173002730F9 /* LanguageSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB902CAD8173002730F9 /* LanguageSelection.swift */; };
+		D30CCB942CAD8C6F002730F9 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CCB932CAD8C6F002730F9 /* Language.swift */; };
 		D354895A2C920FDA0019F58C /* tourBasqueCountryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35489592C920FDA0019F58C /* tourBasqueCountryApp.swift */; };
 		D354895C2C920FDA0019F58C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354895B2C920FDA0019F58C /* ContentView.swift */; };
 		D354895E2C920FDB0019F58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D354895D2C920FDB0019F58C /* Assets.xcassets */; };
@@ -153,6 +156,9 @@
 		D30CCB862CAD6119002730F9 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		D30CCB882CAD613C002730F9 /* Translate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Translate+Firebase.swift"; sourceTree = "<group>"; };
 		D30CCB8B2CAD64A0002730F9 /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
+		D30CCB8E2CAD8156002730F9 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
+		D30CCB902CAD8173002730F9 /* LanguageSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelection.swift; sourceTree = "<group>"; };
+		D30CCB932CAD8C6F002730F9 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		D35489562C920FD90019F58C /* tourBasqueCountry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tourBasqueCountry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35489592C920FDA0019F58C /* tourBasqueCountryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tourBasqueCountryApp.swift; sourceTree = "<group>"; };
 		D354895B2C920FDA0019F58C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -322,6 +328,24 @@
 			path = TranslationManager;
 			sourceTree = "<group>";
 		};
+		D30CCB8D2CAD8140002730F9 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				D30CCB8E2CAD8156002730F9 /* TranslationView.swift */,
+				D30CCB902CAD8173002730F9 /* LanguageSelection.swift */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
+		D30CCB922CAD8C5F002730F9 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				D30CCB852CAD6109002730F9 /* Translate */,
+				D30CCB932CAD8C6F002730F9 /* Language.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
 		D354894D2C920FD90019F58C = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +422,7 @@
 		D35489AA2C9C3CBF0019F58C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D30CCB8D2CAD8140002730F9 /* Translations */,
 				D3548AF22C9D87EE0019F58C /* Event */,
 				D3548A942C9C7BC40019F58C /* Model */,
 				D3548A772C9C7A150019F58C /* Register */,
@@ -892,7 +917,7 @@
 		D3548A942C9C7BC40019F58C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D30CCB852CAD6109002730F9 /* Translate */,
+				D30CCB922CAD8C5F002730F9 /* Language */,
 				D3548AEB2C9D74B60019F58C /* EventModel */,
 				D3548AAF2C9C7CFF0019F58C /* Activity */,
 				D3548AAA2C9C7CD30019F58C /* User */,
@@ -1176,7 +1201,9 @@
 				D3548A8C2C9C7B3A0019F58C /* VerificationEmailView.swift in Sources */,
 				D3548AA42C9C7C7B0019F58C /* Challenge+Firebase.swift in Sources */,
 				D3548ABF2C9C7DB40019F58C /* Puzzle.swift in Sources */,
+				D30CCB942CAD8C6F002730F9 /* Language.swift in Sources */,
 				D3548A312C9C749A0019F58C /* TakePhotoViewModel.swift in Sources */,
+				D30CCB8F2CAD8156002730F9 /* TranslationView.swift in Sources */,
 				D3548A572C9C780E0019F58C /* Map3DFirestoreManager.swift in Sources */,
 				D3548A1A2C9C73480019F58C /* DatesOrderView.swift in Sources */,
 				D3548B352CA47CED0019F58C /* BaseMapViewModel.swift in Sources */,
@@ -1245,6 +1272,7 @@
 				D3548A892C9C7B080019F58C /* ProfileDataManager.swift in Sources */,
 				D3548A4B2C9C77700019F58C /* UserAnnotation.swift in Sources */,
 				D3548A622C9C78950019F58C /* Map2DView.swift in Sources */,
+				D30CCB912CAD8173002730F9 /* LanguageSelection.swift in Sources */,
 				D3548A202C9C73A30019F58C /* DatesOrderFirestoreManager.swift in Sources */,
 				D3548A462C9C75EE0019F58C /* SettingProfileDataManager.swift in Sources */,
 				D3548A872C9C7AF10019F58C /* ProfileViewModel.swift in Sources */,

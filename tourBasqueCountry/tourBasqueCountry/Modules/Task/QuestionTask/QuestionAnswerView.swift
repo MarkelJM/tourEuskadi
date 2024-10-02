@@ -95,57 +95,43 @@ struct ResultQuestionView: View {
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
     
+    @State private var showTranslationSheet = false
+
     var body: some View {
         ZStack {
             Fondo() // Fondo común
 
             VStack {
-                // Menú desplegable de idiomas
-                HStack {
-                    Text("Seleccionar idioma:")
-                        .foregroundColor(.mateGold)
-                    
-                    Menu {
-                        ForEach(viewModel.availableLanguages, id: \.self) { language in
-                            Button(action: {
-                                viewModel.changeLanguage(to: language, for: viewModel.activityId) // Corregimos esta línea
-                            }) {
-                                Text(language)
-                            }
-                        }
-                    } label: {
-                        Label("Idioma", systemImage: "globe")
-                    }
-                    .padding(.trailing, 20)
-                }
-                .padding()
-
-                // Mostrar la traducción si existe
-                if let translation = viewModel.translation {
-                    Text(translation.text)
-                        .font(.title)
-                        .foregroundColor(.mateGold)
-                        .padding()
-
-                    if let url = translation.url, let urlLink = URL(string: url) {
-                        Link("Más información", destination: urlLink)
-                            .foregroundColor(.blue)
+                ScrollView {
+                    // Mostrar el contenido original en español (informationDetail)
+                    if let questionAnswer = viewModel.questionAnswer {
+                        Text(questionAnswer.informationDetail)  // Mostrar la información predeterminada
+                            .font(.title)
+                            .foregroundColor(.mateGold)
                             .padding()
                     }
-                } else {
-                    Text(viewModel.alertMessage)
-                        .font(.title)
-                        .foregroundColor(.mateGold)
-                        .padding()
                 }
-
+                
+                // Botón para mostrar la traducción en Euskera
+                Button(action: {
+                    viewModel.fetchTranslationForActivity(activityId: viewModel.activityId)  // Cargar la traducción en Euskera
+                    showTranslationSheet = true  // Mostrar el sheet para la traducción
+                }) {
+                    Label("Mostrar traducción en Euskera", systemImage: "globe")
+                        .padding()
+                        .background(Color.mateBlueMedium)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
+                
+                // Botón para continuar
                 Button(action: {
                     viewModel.showResultModal = false
                     appState.currentView = .mapContainer
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .background(Color.mateBlueMedium)
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
@@ -155,16 +141,58 @@ struct ResultQuestionView: View {
             .cornerRadius(20)
             .padding()
         }
+        .sheet(isPresented: $showTranslationSheet) {
+            TranslationSheetQuestionView(viewModel: viewModel)  // Sheet personalizado para mostrar la traducción
+        }
         .onAppear {
             soundManager.playWinnerSound()
-            viewModel.fetchAvailableLanguages() // Obtener los idiomas disponibles al aparecer la vista
-            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
     }
 }
 
-#Preview {
-    QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId", appState: AppState()))
-        .environmentObject(AppState())
-}
 
+
+struct TranslationSheetQuestionView: View {
+    @ObservedObject var viewModel: QuestionAnswerViewModel
+
+    var body: some View {
+        VStack {
+            // Contenido dentro de un ScrollView para manejar traducciones largas
+            ScrollView {
+                VStack(alignment: .leading) {
+                    // Mostrar traducción si existe
+                    if let translation = viewModel.translation {
+                        Text(translation.text)
+                            .font(.title)
+                            .padding()
+                            .foregroundColor(.mateGold)
+
+                        if let url = translation.url, let urlLink = URL(string: url) {
+                            Link("Más información", destination: urlLink)
+                                .foregroundColor(.blue)
+                                .padding()
+                        }
+                    } else {
+                        Text("No hay traducción disponible")
+                            .font(.title)
+                            .padding()
+                            .foregroundColor(.mateGold)
+                    }
+                }
+            }
+            .padding()
+
+            // Botón para cerrar el sheet
+            Button(action: {
+                viewModel.showResultModal = false // Cerrar el sheet
+            }) {
+                Text("Cerrar")
+                    .padding()
+                    .background(Color.mateBlueMedium)
+                    .foregroundColor(.mateWhite)
+                    .cornerRadius(10)
+            }
+        }
+        .padding()
+    }
+}

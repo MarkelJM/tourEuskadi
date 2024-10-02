@@ -16,7 +16,7 @@ class BaseViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     
     @Published var availableLanguages: [String] = []
-    @Published var selectedLanguage: String = "Español"
+    //@Published var selectedLanguage: String = "Euskera"
     @Published var translation: Translation?
     
     let firestoreManager = FirestoreManager()
@@ -58,14 +58,15 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    // Fetch translation for a specific activity and language
-    func fetchTranslationForActivity(activityId: String, language: String) {
-        translationDataManager.fetchTranslationForActivity(activityId: activityId, language: language)
+    // Fetch translation for a specific activity (siempre Euskera)
+    func fetchTranslationForActivity(activityId: String) {
+        translationDataManager.fetchTranslationForActivity(activityId: activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
+                    print("Error al obtener traducción: \(error.localizedDescription)")
                 case .finished:
                     break
                 }
@@ -74,13 +75,14 @@ class BaseViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
+    
+    /*
     // Change the language and fetch translation
     func changeLanguage(to language: String, for activityId: String) {
         selectedLanguage = language
         fetchTranslationForActivity(activityId: activityId, language: language)
     }
-    
+    */
     // Update task IDs and spot IDs in the user's profile
     func updateUserTaskIDs(taskID: String, activityType: String, city: String? = nil, challenge: String) {
         guard var user = user else { return }
