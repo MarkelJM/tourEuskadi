@@ -14,17 +14,19 @@ class PuzzleViewModel: BaseViewModel {
     @Published var droppedPieces: [String: CGPoint] = [:]
     @Published var draggingPiece: String?
     @Published var showSheet: Bool = false
+
     
     private let dataManager = PuzzleDataManager()
-    private var activityId: String
+    var activityId: String
     private var appState: AppState
 
 
     init(activityId: String, appState: AppState) {
-         self.activityId = activityId
-         self.appState = appState
-         super.init()
-         fetchUserProfile()
+        self.activityId = activityId
+        self.appState = appState
+        super.init()
+        fetchUserProfile()
+        fetchAvailableLanguages()
      }
     
     func fetchPuzzle() {

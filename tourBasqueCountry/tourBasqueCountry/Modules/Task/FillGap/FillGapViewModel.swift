@@ -15,7 +15,7 @@ class FillGapViewModel: BaseViewModel {
     @Published var showResultAlert: Bool = false
     
     private let dataManager = FillGapDataManager()
-    private var activityId: String
+    var activityId: String
     private weak var appState: AppState? // Referencia débil a AppState
 
     init(activityId: String, appState: AppState) {
@@ -24,6 +24,7 @@ class FillGapViewModel: BaseViewModel {
         super.init()
         fetchUserProfile()
         fetchFillGap()
+        fetchAvailableLanguages()
     }
     
     func fetchFillGap() {

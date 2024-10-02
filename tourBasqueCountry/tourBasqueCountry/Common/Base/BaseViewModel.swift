@@ -15,7 +15,12 @@ class BaseViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
+    @Published var availableLanguages: [String] = []
+    @Published var selectedLanguage: String = "Español"
+    @Published var translation: Translation?
+    
     let firestoreManager = FirestoreManager()
+    let translationDataManager = TranslationDataManager()
     var cancellables = Set<AnyCancellable>()
     let userDefaultsManager = UserDefaultsManager()
     
@@ -34,6 +39,46 @@ class BaseViewModel: ObservableObject {
                 self.user = user
             }
             .store(in: &cancellables)
+    }
+    
+    // Fetch available languages from Firestore
+    func fetchAvailableLanguages() {
+        translationDataManager.fetchAvailableLanguages()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
+                }
+            } receiveValue: { languages in
+                self.availableLanguages = languages
+            }
+            .store(in: &cancellables)
+    }
+
+    // Fetch translation for a specific activity and language
+    func fetchTranslationForActivity(activityId: String, language: String) {
+        translationDataManager.fetchTranslationForActivity(activityId: activityId, language: language)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
+                }
+            } receiveValue: { translation in
+                self.translation = translation
+            }
+            .store(in: &cancellables)
+    }
+
+    // Change the language and fetch translation
+    func changeLanguage(to language: String, for activityId: String) {
+        selectedLanguage = language
+        fetchTranslationForActivity(activityId: activityId, language: language)
     }
     
     // Update task IDs and spot IDs in the user's profile

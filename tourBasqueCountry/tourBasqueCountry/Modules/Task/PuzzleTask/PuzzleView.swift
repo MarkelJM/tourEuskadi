@@ -156,7 +156,6 @@ struct PuzzleView: View {
     }
 }
 
-import SwiftUI
 
 struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
@@ -168,10 +167,44 @@ struct ResulPuzzleSheetView: View {
             Fondo() // Fondo común
 
             VStack {
-                Text(viewModel.alertMessage)
-                    .font(.title)
-                    .foregroundColor(.mateGold)
-                    .padding()
+                // Menú desplegable de idiomas
+                HStack {
+                    Text("Seleccionar idioma:")
+                        .foregroundColor(.mateGold)
+                    
+                    Menu {
+                        ForEach(viewModel.availableLanguages, id: \.self) { language in
+                            Button(action: {
+                                viewModel.changeLanguage(to: language, for: viewModel.activityId) // Corregimos esta línea
+                            }) {
+                                Text(language)
+                            }
+                        }
+                    } label: {
+                        Label("Idioma", systemImage: "globe")
+                    }
+                    .padding(.trailing, 20)
+                }
+                .padding()
+
+                // Mostrar la traducción si existe
+                if let translation = viewModel.translation {
+                    Text(translation.text)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+
+                    if let url = translation.url, let urlLink = URL(string: url) {
+                        Link("Más información", destination: urlLink)
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                } else {
+                    Text(viewModel.alertMessage)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+                }
 
                 Button(action: {
                     viewModel.showSheet = false
@@ -191,6 +224,8 @@ struct ResulPuzzleSheetView: View {
         }
         .onAppear {
             soundManager.playWinnerSound()
+            viewModel.fetchAvailableLanguages() // Obtener los idiomas disponibles al aparecer la vista
+            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
     }
 }

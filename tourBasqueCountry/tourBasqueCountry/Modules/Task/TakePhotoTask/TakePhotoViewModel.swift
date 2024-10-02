@@ -15,7 +15,7 @@ class TakePhotoViewModel: BaseViewModel {
     @Published var showResultModal: Bool = false
 
     private let dataManager = TakePhotoDataManager()
-    private var activityId: String
+    var activityId: String
     private var appState: AppState
 
     init(activityId: String, appState: AppState) {
@@ -24,6 +24,7 @@ class TakePhotoViewModel: BaseViewModel {
         super.init()
         fetchUserProfile()
         fetchTakePhoto()
+        fetchAvailableLanguages()
     }
 
     func fetchTakePhoto() {

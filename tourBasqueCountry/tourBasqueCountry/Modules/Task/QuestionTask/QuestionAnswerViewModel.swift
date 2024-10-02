@@ -15,7 +15,7 @@ class QuestionAnswerViewModel: BaseViewModel {
     @Published var showResultModal: Bool = false
     
     private let dataManager = QuestionAnswerDataManager()
-    private var activityId: String
+    var activityId: String
     private var appState: AppState
 
     init(activityId: String, appState: AppState) {
@@ -24,6 +24,7 @@ class QuestionAnswerViewModel: BaseViewModel {
         super.init()
         fetchUserProfile() // Cargar el perfil del usuario cuando se crea el ViewModel
         fetchQuestionAnswer()
+        fetchAvailableLanguages()
     }
     
     func fetchQuestionAnswer() {

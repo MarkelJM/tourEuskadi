@@ -94,29 +94,50 @@ struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
-
+    
     var body: some View {
         ZStack {
             Fondo() // Fondo común
 
             VStack {
-                Text(viewModel.alertMessage)
-                    .font(.title)
-                    .foregroundColor(.mateGold)
-                    .padding()
-
-                ScrollView {
-                    VStack {
-                        if let informationDetail = viewModel.questionAnswer?.informationDetail {
-                            Text(informationDetail)
-                                .font(.body)
-                                .foregroundColor(.mateWhite)
-                                .multilineTextAlignment(.center)
-                                .padding()
+                // Menú desplegable de idiomas
+                HStack {
+                    Text("Seleccionar idioma:")
+                        .foregroundColor(.mateGold)
+                    
+                    Menu {
+                        ForEach(viewModel.availableLanguages, id: \.self) { language in
+                            Button(action: {
+                                viewModel.changeLanguage(to: language, for: viewModel.activityId) // Corregimos esta línea
+                            }) {
+                                Text(language)
+                            }
                         }
+                    } label: {
+                        Label("Idioma", systemImage: "globe")
                     }
+                    .padding(.trailing, 20)
                 }
-                .frame(maxHeight: 200)
+                .padding()
+
+                // Mostrar la traducción si existe
+                if let translation = viewModel.translation {
+                    Text(translation.text)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+
+                    if let url = translation.url, let urlLink = URL(string: url) {
+                        Link("Más información", destination: urlLink)
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                } else {
+                    Text(viewModel.alertMessage)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+                }
 
                 Button(action: {
                     viewModel.showResultModal = false
@@ -124,11 +145,10 @@ struct ResultQuestionView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateBlueMedium)
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
-                .padding(.top, 20)
             }
             .padding()
             .background(Color.black.opacity(0.5))
@@ -137,6 +157,8 @@ struct ResultQuestionView: View {
         }
         .onAppear {
             soundManager.playWinnerSound()
+            viewModel.fetchAvailableLanguages() // Obtener los idiomas disponibles al aparecer la vista
+            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
     }
 }

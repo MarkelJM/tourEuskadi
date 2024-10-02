@@ -15,15 +15,9 @@ enum Avatar: String, Codable, CaseIterable, Identifiable {
 }
 
 enum Province: String, Codable, CaseIterable, Identifiable {
-    case avila = "Ávila"
-    case burgos = "Burgos"
-    case leon = "León"
-    case palencia = "Palencia"
-    case salamanca = "Salamanca"
-    case segovia = "Segovia"
-    case soria = "Soria"
-    case valladolid = "Valladolid"
-    case zamora = "Zamora"
+    case guipuzcoa = "Guipúzcoa"
+    case vizcaya = "Vizcaya"
+    case alava = "Álava"
     case other = "Other"
     
     var id: String { self.rawValue }

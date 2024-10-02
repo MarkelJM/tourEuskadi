@@ -66,11 +66,11 @@ struct ResultCoinView: View {
     @ObservedObject var viewModel: CoinViewModel
     @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
-
+    
     var body: some View {
         ZStack {
-            Fondo() // Usamos el fondo común
-            
+            Fondo() // Fondo común
+
             VStack {
                 // Menú desplegable de idiomas
                 HStack {
@@ -79,8 +79,10 @@ struct ResultCoinView: View {
                     
                     Menu {
                         ForEach(viewModel.availableLanguages, id: \.self) { language in
-                            Button(action: { viewModel.changeLanguage(to: language) }) {
-                                Text(language.capitalized)  // Mostramos el nombre del idioma
+                            Button(action: {
+                                viewModel.changeLanguage(to: language, for: viewModel.activityId) // Corregimos esta línea
+                            }) {
+                                Text(language)
                             }
                         }
                     } label: {
@@ -103,21 +105,22 @@ struct ResultCoinView: View {
                             .padding()
                     }
                 } else {
-                    Text(viewModel.resultMessage)
+                    Text(viewModel.alertMessage)
                         .font(.title)
                         .foregroundColor(.mateGold)
                         .padding()
                 }
 
-                Button("Continuar") {
-                    // Navegar de vuelta al container
+                Button(action: {
                     viewModel.showResultModal = false
                     appState.currentView = .mapContainer
+                }) {
+                    Text("Continuar")
+                        .padding()
+                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
                 }
-                .padding()
-                .background(Color.mateBlueMedium)
-                .foregroundColor(.mateWhite)
-                .cornerRadius(10)
             }
             .padding()
             .background(Color.black.opacity(0.5))
@@ -125,8 +128,9 @@ struct ResultCoinView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound()  // Reproducir sonido cuando aparezca el resultado
-            viewModel.fetchAvailableLanguages()  // Cargar los idiomas disponibles
+            soundManager.playWinnerSound()
+            viewModel.fetchAvailableLanguages() // Obtener los idiomas disponibles al aparecer la vista
+            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
     }
 }

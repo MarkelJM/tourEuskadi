@@ -16,7 +16,7 @@ class DatesOrderViewModel: BaseViewModel {
     @Published var showResultAlert: Bool = false
     
     private let dataManager = DatesOrderDataManager()
-    private var activityId: String
+    var activityId: String
     private var appState: AppState
     var isCorrectOrder: Bool = false
     
@@ -26,6 +26,7 @@ class DatesOrderViewModel: BaseViewModel {
         super.init()
         fetchUserProfile()
         fetchDateEvent()
+        fetchAvailableLanguages()
     }
     
     func fetchDateEvent() {

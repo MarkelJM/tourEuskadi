@@ -113,23 +113,42 @@ struct ResultTakePhotoView: View {
             Fondo() // Usamos el fondo común
 
             VStack {
-                Text(viewModel.alertMessage)
-                    .font(.title)
-                    .foregroundColor(.mateGold) // Usamos mateGold
-                    .padding()
+                // Menú desplegable de idiomas
+                HStack {
+                    Text("Seleccionar idioma:")
+                        .foregroundColor(.mateGold)
 
-                ScrollView {
-                    VStack {
-                        if let informationDetail = viewModel.takePhoto?.informationDetail {
-                            Text(informationDetail)
-                                .font(.body)
-                                .foregroundColor(.mateWhite) // Usamos mateWhite
-                                .multilineTextAlignment(.center)
-                                .padding()
+                    Menu {
+                        ForEach(viewModel.availableLanguages, id: \.self) { language in
+                            Button(action: { viewModel.changeLanguage(to: language, for: viewModel.activityId) }) {
+                                Text(language.capitalized)  // Mostramos el nombre del idioma
+                            }
                         }
+                    } label: {
+                        Label("Idioma", systemImage: "globe")
                     }
+                    .padding(.trailing, 20)
                 }
-                .frame(maxHeight: 200)
+                .padding()
+
+                // Mostrar la traducción si existe
+                if let translation = viewModel.translation {
+                    Text(translation.text)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+
+                    if let url = translation.url, let urlLink = URL(string: url) {
+                        Link("Más información", destination: urlLink)
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                } else {
+                    Text(viewModel.alertMessage)
+                        .font(.title)
+                        .foregroundColor(.mateGold)
+                        .padding()
+                }
 
                 Button(action: {
                     viewModel.showResultModal = false
@@ -137,11 +156,10 @@ struct ResultTakePhotoView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
+                        .background(Color.mateBlueMedium)
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
-                .padding(.top, 20)
             }
             .padding()
             .background(Color.black.opacity(0.5))
@@ -149,7 +167,9 @@ struct ResultTakePhotoView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound()
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            viewModel.fetchAvailableLanguages() // Cargar los idiomas disponibles
+            viewModel.fetchTranslationForActivity(activityId: viewModel.activityId, language: viewModel.selectedLanguage)
         }
     }
 }
