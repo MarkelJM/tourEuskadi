@@ -13,8 +13,13 @@ class CoinViewModel: BaseViewModel {
     @Published var isLoading: Bool = true
     @Published var showResultModal: Bool = false
     @Published var resultMessage: String = ""
+    @Published var selectedLanguage: String = "Español"
+    @Published var translation: Translation?
+    @Published var availableLanguages: [String] = []
+
 
     private let dataManager = CoinDataManager()
+    private let translationDataManager = TranslationDataManager()
     private var activityId: String
     private var appState: AppState
 
@@ -24,7 +29,49 @@ class CoinViewModel: BaseViewModel {
         super.init()
         fetchUserProfile()
         fetchCoinById(activityId)
+        fetchAvailableLanguages()
     }
+    
+    // Función para obtener los idiomas disponibles
+    func fetchAvailableLanguages() {
+        translationDataManager.fetchAvailableLanguages()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
+                }
+            } receiveValue: { languages in
+                self.availableLanguages = languages
+            }
+            .store(in: &cancellables)
+    }
+    
+    // Función para obtener la traducción basada en el idioma seleccionado
+    func fetchTranslationForActivity(activityId: String, language: String) {
+        translationDataManager.fetchTranslationForActivity(activityId: activityId, language: language)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
+                }
+            } receiveValue: { translation in
+                self.translation = translation
+            }
+            .store(in: &cancellables)
+    }
+
+    func changeLanguage(to language: String) {
+        selectedLanguage = language
+        fetchTranslationForActivity(activityId: activityId, language: language)
+    }
+    
+
     
     func fetchCoinById(_ id: String) {
         isLoading = true

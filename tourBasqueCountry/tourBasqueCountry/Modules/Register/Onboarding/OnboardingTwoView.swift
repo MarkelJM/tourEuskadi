@@ -25,7 +25,7 @@ struct OnboardingTwoView: View {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)
                                     .padding()
-                                    .background(Color.mateGold) // Usamos mateGold
+                                    .background(Color.mateGold)
                                     .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .padding(.top, 50)
@@ -35,15 +35,15 @@ struct OnboardingTwoView: View {
                         
                         Text("Continuación de la historia")
                             .font(.title)
-                            .foregroundColor(.mateGold) // Usamos mateGold
+                            .foregroundColor(.mateGold)
                             .padding(.top, 40)
                         
                         Text("""
-                            Elige el reto y conquista uno por uno cada territorio. Tras finalizar cada reto conseguirás una recompensa.
-                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento CyL.
+                            Elige el reto y conquista uno por uno cada zona. Tras finalizar cada reto conseguirás una recompensa.
+                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento Euskadi.
                             """)
                             .font(.body)
-                            .foregroundColor(.mateWhite) // Usamos mateWhite
+                            .foregroundColor(.mateWhite)
                     }
                     .padding()
                 }
@@ -55,15 +55,15 @@ struct OnboardingTwoView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
-                        .foregroundColor(.mateWhite) // Usamos mateWhite
+                        .background(Color.mateBlueMedium)
+                        .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
                 Spacer()
             }
             .padding()
-            .background(Color.black.opacity(0.6)) // Fondo con opacidad
+            .background(Color.black.opacity(0.6))
             .cornerRadius(20)
             .padding()
         }

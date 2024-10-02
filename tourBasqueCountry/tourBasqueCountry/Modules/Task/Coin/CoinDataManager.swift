@@ -15,4 +15,6 @@ class CoinDataManager {
     func fetchCoinById(_ id: String) -> AnyPublisher<Coin, Error> {
         return firestoreManager.fetchCoinById(id)
     }
+    
+
 }

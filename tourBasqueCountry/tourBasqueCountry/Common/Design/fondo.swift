@@ -5,6 +5,10 @@
 //  Created by Markel Juaristi on 20/9/24.
 //
 
+
+
+
+
 import SwiftUI
 
 struct Fondo: View {
@@ -16,12 +20,12 @@ struct Fondo: View {
                 Color(red: 0/255, green: 91/255, blue: 171/255),  // Pantone 7687 C (Azul medio)
                 Color(red: 0/255, green: 46/255, blue: 93/255)   // Pantone 288 C (Azul oscuro)
             ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            .ignoresSafeArea()
+            .ignoresSafeArea(edges: .all)
         }
     }
 }
 
-// Vista previa
+//  previa
 #Preview {
     Fondo()
 }

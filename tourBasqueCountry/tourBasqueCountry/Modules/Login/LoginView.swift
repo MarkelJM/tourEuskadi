@@ -13,25 +13,25 @@ struct LoginView: View {
 
     var body: some View {
         ZStack {
-            // Fondo con gradiente suave
             Fondo()
+                .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
                 Text("Iniciar Sesión")
                     .font(.largeTitle)
-                    .foregroundColor(.mateGold) // Usamos el color mateGold
+                    .foregroundColor(.mateGold) 
                     .padding(.top, 40)
                 
                 TextField("Email", text: $viewModel.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .background(Color.mateWhite.opacity(0.8)) // Usamos el color mateWhite
+                    .background(Color.mateWhite.opacity(0.8))
                     .cornerRadius(10)
 
                 SecureField("Contraseña", text: $viewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .background(Color.mateWhite.opacity(0.8)) // Usamos el color mateWhite
+                    .background(Color.mateWhite.opacity(0.8))
                     .cornerRadius(10)
                 
                 Button(action: {
@@ -41,28 +41,26 @@ struct LoginView: View {
                         .foregroundColor(.blue)
                 }
 
-                // Botón para iniciar sesión con los colores de la extensión
                 Button(action: {
                     viewModel.login()
                 }) {
                     Text("Iniciar Sesión")
-                        .foregroundColor(.mateWhite) // Texto blanco
+                        .foregroundColor(.mateWhite)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.mateGold) // Fondo oro mate
+                        .background(Color.mateGold)
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)
                 
-                // Botón para crear cuenta con los colores de la extensión
                 Button(action: {
                     appState.currentView = .onboardingOne
                 }) {
                     Text("Crear Cuenta")
-                        .foregroundColor(.mateWhite) // Texto blanco
+                        .foregroundColor(.mateWhite)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.mateBlueLight) // Fondo azul claro
+                        .background(Color.mateBlueLight)
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)

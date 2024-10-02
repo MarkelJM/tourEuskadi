@@ -12,7 +12,6 @@ struct OnboardingOneView: View {
     
     var body: some View {
         ZStack {
-            // Fondo con imagen
             Fondo()
 
             VStack {
@@ -25,7 +24,7 @@ struct OnboardingOneView: View {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)
                                     .padding()
-                                    .background(Color.mateGold) // Usamos mateGold
+                                    .background(Color.mateGold)
                                     .foregroundColor(.black)
                                     .cornerRadius(10)
                                     .padding(.top, 50)
@@ -35,16 +34,16 @@ struct OnboardingOneView: View {
                         VStack(alignment: .leading, spacing: 20) {
                             Text("Bienvenido a nuestra historia")
                                 .font(.title)
-                                .foregroundColor(.mateGold) // Usamos mateGold
+                                .foregroundColor(.mateGold)
                                 .padding(.top, 40)
                             
                             Text("""
-                                Demuestra que no solo conoces los lugares más emblemáticos de Castilla y León sino que también su historia.
+                                Demuestra que no solo conoces los lugares más emblemáticos de Euskadi sino que también su historia, cultura, gastronomia y curiosidades.
                                 
-                                ¡Vamos a la Conquista de CyL!
+                                ¡Vamos a la Conquista de EuskadiGO!
                                 """)
                                 .font(.body)
-                                .foregroundColor(.mateWhite) // Usamos mateWhite
+                                .foregroundColor(.mateWhite)
                         }
                         .padding()
                     }
@@ -57,8 +56,8 @@ struct OnboardingOneView: View {
                 }) {
                     Text("Continuar")
                         .padding()
-                        .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
-                        .foregroundColor(.mateWhite) // Usamos mateWhite
+                        .background(Color.mateBlueMedium)
+                        .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }

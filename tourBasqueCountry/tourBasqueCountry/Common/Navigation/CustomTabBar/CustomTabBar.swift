@@ -53,12 +53,14 @@ struct CustomTabBar: View {
                 }
                 .frame(maxWidth: .infinity)
             }
-            .frame(height: 80)  // Altura fija para el TabBar
-            .padding(.horizontal, 16)  // Un padding horizontal más ligero
-            .background(Color.mateGold.opacity(0.8))  // Ajuste de la opacidad para una mejor visualización
-            //.cornerRadius(15)  // Bordes redondeados más pronunciados
-            .shadow(radius: 5)  // Añadir una ligera sombra para hacerla más visible
+            .frame(height: 80)
+            .padding(.horizontal, 16)  
+            .background(Color.mateGold.opacity(0.8))
+            
+            .shadow(radius: 5)
+            .edgesIgnoringSafeArea(.bottom)
+
         }
-        //.padding(.top, 10)  // Un pequeño padding desde la parte superior
+        
     }
 }
