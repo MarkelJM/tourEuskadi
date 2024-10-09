@@ -126,7 +126,6 @@ struct DatesOrderView: View {
     }
 }
 
-import SwiftUI
 
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
@@ -198,6 +197,8 @@ struct ResultDatesOrderView: View {
 
 struct TranslationSheetDatesView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
+    @EnvironmentObject var appState: AppState
+
 
     var body: some View {
         VStack {
@@ -228,7 +229,9 @@ struct TranslationSheetDatesView: View {
 
             // Botón para cerrar el sheet
             Button(action: {
-                viewModel.showResultAlert = false  // Cerrar el sheet
+                viewModel.showResultAlert = false
+                appState.currentView = .mapContainer
+
             }) {
                 Text("Cerrar")
                     .padding()

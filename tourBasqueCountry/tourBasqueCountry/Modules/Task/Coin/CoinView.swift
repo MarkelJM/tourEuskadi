@@ -132,6 +132,8 @@ struct ResultCoinView: View {
 
 struct TranslationSheetCoinView: View {
     @ObservedObject var viewModel: CoinViewModel
+    @EnvironmentObject var appState: AppState
+
 
     var body: some View {
         VStack {
@@ -163,6 +165,8 @@ struct TranslationSheetCoinView: View {
             // Botón para cerrar el sheet
             Button(action: {
                 viewModel.showResultModal = false // Cerrar el sheet
+                appState.currentView = .mapContainer
+
             }) {
                 Text("Cerrar")
                     .padding()

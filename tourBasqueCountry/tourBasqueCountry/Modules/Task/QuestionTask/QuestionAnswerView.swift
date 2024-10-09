@@ -161,6 +161,8 @@ struct ResultQuestionView: View {
 
 struct TranslationSheetQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
+    @EnvironmentObject var appState: AppState
+
 
     var body: some View {
         VStack {
@@ -191,7 +193,9 @@ struct TranslationSheetQuestionView: View {
 
             // Botón para cerrar el sheet
             Button(action: {
-                viewModel.showResultModal = false // Cerrar el sheet
+                viewModel.showResultModal = false
+                appState.currentView = .mapContainer
+
             }) {
                 Text("Cerrar")
                     .padding()
