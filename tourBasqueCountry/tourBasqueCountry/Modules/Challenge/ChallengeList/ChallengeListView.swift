@@ -30,6 +30,7 @@ struct ChallengeListView: View {
                                 image
                                     .resizable()
                                     .frame(width: 60, height: 60)
+                                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                             } placeholder: {
                                 Image(systemName: "photo")
                                     .resizable()

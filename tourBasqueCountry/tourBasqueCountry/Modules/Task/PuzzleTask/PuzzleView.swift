@@ -133,7 +133,7 @@ struct PuzzleView: View {
                         .padding()
                         .background(Color.black.opacity(0.5)) // Fondo con opacidad para el VStack
                         .cornerRadius(20)
-                        .sheet(isPresented: $viewModel.showSheet) {
+                        .sheet(isPresented: $viewModel.showResultSheet) {
                             ResulPuzzleSheetView(viewModel: viewModel)
                         }
                         .alert(isPresented: $showInstructionsAlert) {
@@ -167,6 +167,13 @@ struct ResulPuzzleSheetView: View {
             Fondo() // Fondo común
 
             VStack {
+                
+                // Mostrar el mensaje de alerta
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+                
                 // ScrollView para mostrar el contenido original (informationDetail)
                 ScrollView {
                     if let puzzle = viewModel.puzzles.first {  // Mostramos el primer puzzle
@@ -190,7 +197,7 @@ struct ResulPuzzleSheetView: View {
 
                 // Botón para continuar
                 Button(action: {
-                    viewModel.showSheet = false
+                    viewModel.showResultSheet = false
                     appState.currentView = .mapContainer
                 }) {
                     Text("Continuar")
@@ -205,13 +212,13 @@ struct ResulPuzzleSheetView: View {
             .cornerRadius(20)
             .padding()
         }
-        .sheet(isPresented: $viewModel.showSheet) {
+        .sheet(isPresented: $viewModel.showTranslationSheet) {
             // Sheet personalizado para mostrar la traducción
             TranslationSheetPuzzleView(viewModel: viewModel)
         }
         .onAppear {
             soundManager.playWinnerSound()
-            viewModel.fetchPuzzle()  // Cargar los datos del puzzle
+            //viewModel.fetchPuzzle()  // Cargar los datos del puzzle
         }
     }
 }
@@ -249,7 +256,7 @@ struct TranslationSheetPuzzleView: View {
 
             // Botón para cerrar el sheet
             Button(action: {
-                viewModel.showSheet = false  // Cerrar el sheet
+                viewModel.showTranslationSheet = false  // Cerrar el sheet
             }) {
                 Text("Cerrar")
                     .padding()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PolicyView: View {
     
-    private let url = URL(string: "https://wordpress.com/post/euskadirago.wordpress.com/11")!
+    private let url = URL(string: "https://euskadirago.wordpress.com/2024/10/02/terminoscondiciones/")!
     
     var body: some View {
         ZStack {

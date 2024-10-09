@@ -15,9 +15,7 @@ struct RegisterView: View {
 
    var body: some View {
        ZStack {
-           Image("fondoSolar")
-               .resizable()
-               .scaledToFill()
+           Fondo()
                .edgesIgnoringSafeArea(.all)
            
            ScrollView {
@@ -49,6 +47,7 @@ struct RegisterView: View {
                    HStack {
                        Toggle(isOn: $viewModel.agreeToTerms) {
                            Text("He leído y acepto los")
+                               .foregroundColor(.mateWhite)
                        }
                        .toggleStyle(CheckboxToggleStyle())
                        .padding(.horizontal, 10)
@@ -66,10 +65,10 @@ struct RegisterView: View {
                        viewModel.register()
                    }) {
                        Text("Registrarse")
-                           .foregroundColor(.mateWhite) // Texto blanco
+                           .foregroundColor(.mateWhite)
                            .padding()
                            .frame(maxWidth: .infinity)
-                           .background(Color.mateGold) // Fondo oro mate
+                           .background(Color.mateGold)
                            .cornerRadius(10)
                    }
                    .padding(.top, 20)
@@ -82,7 +81,7 @@ struct RegisterView: View {
                            .padding()
                    }
                }
-               .background(Color.black.opacity(0.5))
+               .background(Color.black.opacity(0.7))
                .cornerRadius(20)
                .padding()
                .padding(.bottom, keyboardObserver.keyboardHeight)

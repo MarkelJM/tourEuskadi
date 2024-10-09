@@ -74,6 +74,12 @@ struct ResultCoinView: View {
             Fondo() // Fondo común
 
             VStack {
+                
+                // Mostrar el mensaje de alerta
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
                 // ScrollView para mostrar el contenido original (description)
                 ScrollView {
                     if let coin = viewModel.coins.first {  // Mostramos la descripción del primer coin
@@ -123,7 +129,6 @@ struct ResultCoinView: View {
     }
 }
 
-import SwiftUI
 
 struct TranslationSheetCoinView: View {
     @ObservedObject var viewModel: CoinViewModel

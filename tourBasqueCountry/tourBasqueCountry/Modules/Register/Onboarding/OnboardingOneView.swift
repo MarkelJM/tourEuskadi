@@ -38,7 +38,7 @@ struct OnboardingOneView: View {
                                 .padding(.top, 40)
                             
                             Text("""
-                                Demuestra que no solo conoces los lugares más emblemáticos de Euskadi sino que también su historia, cultura, gastronomia y curiosidades.
+                                ¡Hola! Nuestra nave a tenido unos problemas y hemos aterrizado aquí. Según nuestras coordenadas deberíamos de estar en Euskadi. Parece un lugar hermoso, ¿nos ayudas a conocerlo?
                                 
                                 ¡Vamos a la Conquista de EuskadiGO!
                                 """)

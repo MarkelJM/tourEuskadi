@@ -140,6 +140,12 @@ struct ResultDatesOrderView: View {
             Fondo() // Fondo común
 
             VStack {
+                // Mostrar el mensaje de alerta
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+                
                 // ScrollView para mostrar el contenido original (description)
                 ScrollView {
                     if let dateEvent = viewModel.dateEvent {

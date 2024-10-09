@@ -13,7 +13,8 @@ class PuzzleViewModel: BaseViewModel {
     @Published var isLoading: Bool = true
     @Published var droppedPieces: [String: CGPoint] = [:]
     @Published var draggingPiece: String?
-    @Published var showSheet: Bool = false
+    @Published var showResultSheet: Bool = false
+    @Published var showTranslationSheet: Bool = false
 
     
     private let dataManager = PuzzleDataManager()
@@ -83,6 +84,9 @@ class PuzzleViewModel: BaseViewModel {
                 isCorrect = false
                 break
             }
+            
+            showResultSheet = true
+
         }
         
         if isCorrect {
@@ -92,7 +96,7 @@ class PuzzleViewModel: BaseViewModel {
             alertMessage = puzzle.incorrectAnswerMessage
         }
         
-        showSheet = true
+        //showSheet = true
     }
     
     private func updateUserTask(puzzle: Puzzle) {

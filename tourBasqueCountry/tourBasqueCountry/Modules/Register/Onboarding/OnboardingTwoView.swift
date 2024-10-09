@@ -39,8 +39,7 @@ struct OnboardingTwoView: View {
                             .padding(.top, 40)
                         
                         Text("""
-                            Elige el reto y conquista uno por uno cada zona. Tras finalizar cada reto conseguirás una recompensa.
-                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento Euskadi.
+                            Elige el reto que más te guste. Puedes elegir rutas por los diferentes territorios históricos, ciudades, gastronomía o incluso sobre el Euskera.  Tras finalizar cada reto conseguirás una recompensa.
                             """)
                             .font(.body)
                             .foregroundColor(.mateWhite)

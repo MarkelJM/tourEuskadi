@@ -102,6 +102,13 @@ struct ResultQuestionView: View {
             Fondo() // Fondo común
 
             VStack {
+                
+                // Mostrar el mensaje de alerta
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+                
                 ScrollView {
                     // Mostrar el contenido original en español (informationDetail)
                     if let questionAnswer = viewModel.questionAnswer {
