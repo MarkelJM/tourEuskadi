@@ -76,6 +76,8 @@ struct PuzzleView: View {
                                             .frame(width: geometry.size.width, height: geometry.size.height)
                                     }
                                     .padding()
+                                    
+                                    let scaleFactor = geometry.size.width / 500
 
                                     // Dropped Pieces
                                     ForEach(viewModel.droppedPieces.keys.sorted(), id: \.self) { key in
@@ -83,7 +85,9 @@ struct PuzzleView: View {
                                             AsyncImage(url: URL(string: imageUrl)) { image in
                                                 image
                                                     .resizable()
-                                                    .frame(width: 50, height: 50)
+                                                    .aspectRatio(contentMode: .fit)
+                                                    //.frame(width: 50, height: 50)
+                                                    .frame(width: 100 * scaleFactor, height: 100 * scaleFactor)
                                                     .position(x: position.x, y: position.y)
                                                     .gesture(
                                                         DragGesture()
@@ -96,8 +100,10 @@ struct PuzzleView: View {
                                                     )
                                             } placeholder: {
                                                 ProgressView()
-                                                    .frame(width: 50, height: 50)
-                                                    .position(x: position.x, y: position.y)
+                                                    //.frame(width: 50, height: 50)
+                                                    //.position(x: position.x, y: position.y)
+                                                    .frame(width: 100 * scaleFactor, height: 100 * scaleFactor)
+                                                    .position(x: position.x * scaleFactor, y: position.y * scaleFactor)
                                             }
                                         }
                                     }
