@@ -108,10 +108,11 @@ struct NavigationState: View {
         }
     }
 }
-
+/*
 struct NavigationState_Previews: PreviewProvider {
     static var previews: some View {
         NavigationState()
             .environmentObject(AppState())
     }
 }
+*/

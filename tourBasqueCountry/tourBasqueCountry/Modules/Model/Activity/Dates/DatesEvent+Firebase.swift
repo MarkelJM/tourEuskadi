@@ -49,7 +49,6 @@ extension DateEvent {
             "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital,
             "challenge": challenge,
-            "informationDetail": informationDetail
-        ]
+      ]
     }
 }

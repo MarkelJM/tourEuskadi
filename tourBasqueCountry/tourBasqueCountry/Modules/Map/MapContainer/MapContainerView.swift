@@ -27,7 +27,7 @@ struct MapContainerView: View {
                         .edgesIgnoringSafeArea([.top, .bottom])
                 }
             }
-            //.padding(.bottom, 10)
+            
 
             Button(action: {
                 is3DView.toggle()

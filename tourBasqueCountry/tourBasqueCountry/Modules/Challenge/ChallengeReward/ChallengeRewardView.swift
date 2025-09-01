@@ -13,10 +13,7 @@ struct ChallengeRewardView: View {
 
     var body: some View {
         ZStack {
-            Image("fondoSolar")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+            Fondo()
             
             VStack(spacing: 20) {
                 if viewModel.isLoading {
@@ -80,7 +77,7 @@ struct ResultChallengeRewardView: View {
 
                 Button("Continuar") {
                     viewModel.showResultModal = false
-                    appState.currentView = .map
+                    appState.currentView = .mapContainer
                 }
                 .padding()
                 .background(Color.mateBlueMedium) // Usamos mateBlueMedium en lugar de mateRed
